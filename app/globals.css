@@ -1,21 +1,46 @@
 @import "tailwindcss";
 
+/*
+ * Charte graphique officielle MEDEGNAN CONSULTING — MDDS v1.0.
+ * Source unique de la palette : ne jamais écrire une couleur en dur
+ * dans un composant, toujours passer par ces variables.
+ */
 :root {
-  --color-ink: #17130f;
-  --color-ink-soft: #4a4238;
-  --color-ink-faint: #7a6f60;
-  --color-paper: #f7f2e7;
-  --color-paper-raised: #efe6d3;
-  --color-paper-deep: #e7dabd;
-  --color-line: #dccfa9;
-  --color-line-soft: #e5dabd;
-  --color-accent: #a8701f;
-  --color-accent-loud: #dfa64a;
-  --color-accent-soft: #f0e0bd;
-  --color-deep: #1f3a30;
-  --color-deep-soft: #dfe8e2;
-  --color-signal: #8a3220;
-  --color-signal-soft: #f2ded8;
+  --mc-navy-profond: #0d2137;
+  --mc-navy: #1b3a6b;
+  --mc-or: #c9a84c;
+  --mc-or-fonce: #a8863a;
+  --mc-teal: #1a7a6e;
+  --mc-rouge: #c0392b;
+  --mc-violet: #5b2c6f;
+  --mc-vert: #1e8449;
+  --mc-bleu-acier: #2e5fa3;
+  --mc-bleu-tres-clair: #eef4fb;
+  --mc-gris-bordure: #cccccc;
+  --mc-texte: #2c2c2c;
+
+  --color-ink: var(--mc-navy-profond);
+  --color-ink-soft: var(--mc-texte);
+  --color-ink-faint: #6b7684;
+  --color-paper: #ffffff;
+  --color-paper-raised: var(--mc-bleu-tres-clair);
+  --color-paper-deep: #dfe9f6;
+  --color-line: var(--mc-gris-bordure);
+  --color-line-soft: #e4e4e4;
+  --color-accent: var(--mc-or);
+  --color-accent-loud: var(--mc-or);
+  --color-accent-hover: var(--mc-or-fonce);
+  --color-accent-soft: #f6eeda;
+  --color-deep: var(--mc-navy);
+  --color-deep-soft: #e7ecf5;
+  --color-signal: var(--mc-rouge);
+  --color-signal-soft: #f8e4e1;
+
+  /* Sémantique par type de contenu (identique entre les rapports Word et le site) */
+  --color-analyse: var(--mc-teal);
+  --color-offre: var(--mc-violet);
+  --color-resultat: var(--mc-vert);
+  --color-processus: var(--mc-bleu-acier);
 
   --font-display: var(--font-fraunces);
   --font-body: var(--font-public-sans);
@@ -33,11 +58,16 @@
   --color-line-soft: var(--color-line-soft);
   --color-accent: var(--color-accent);
   --color-accent-loud: var(--color-accent-loud);
+  --color-accent-hover: var(--color-accent-hover);
   --color-accent-soft: var(--color-accent-soft);
   --color-deep: var(--color-deep);
   --color-deep-soft: var(--color-deep-soft);
   --color-signal: var(--color-signal);
   --color-signal-soft: var(--color-signal-soft);
+  --color-analyse: var(--color-analyse);
+  --color-offre: var(--color-offre);
+  --color-resultat: var(--color-resultat);
+  --color-processus: var(--color-processus);
 
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -62,20 +92,21 @@ html {
 
 body {
   background: var(--color-paper);
-  color: var(--color-ink);
+  color: var(--color-ink-soft);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "ss01" 1;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display), ui-serif, serif;
+  color: var(--color-ink);
   letter-spacing: -0.01em;
   font-weight: 500;
 }
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-paper);
+  color: var(--color-ink);
 }
 
 a {
@@ -83,7 +114,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-hover);
   outline-offset: 3px;
   border-radius: 2px;
 }

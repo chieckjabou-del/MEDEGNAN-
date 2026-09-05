@@ -7,14 +7,16 @@ export const site = {
     "MEDEGNAN CONSULTING diagnostique la situation réelle d'une organisation, identifie les goulots qui bloquent sa performance, construit une trajectoire de transformation et accompagne son exécution jusqu'au résultat mesuré.",
   contact: {
     email: "contactmedegnan@gmail.com",
-    phoneBenin: "+229 01 64 28 08 65",
+    phoneBenin: "+229 64 28 08 65",
     phoneFrance: "+33 7 66 58 29 22",
     city: "Cotonou, Bénin",
   },
   whatsapp: {
     // Numéro Bénin confirmé actif sur WhatsApp Business par le cabinet.
-    digits: "2290164280865",
-    display: "+229 01 64 28 08 65",
+    // Format retenu : celui utilisé de façon cohérente et déjà testé dans
+    // le projet medegnan-animated (wa.me/22964280865) — à reconfirmer si besoin.
+    digits: "22964280865",
+    display: "+229 64 28 08 65",
   },
   legal: {
     entityNote:
