@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #17130f;
+  --color-ink-soft: #4a4238;
+  --color-ink-faint: #7a6f60;
+  --color-paper: #f7f2e7;
+  --color-paper-raised: #efe6d3;
+  --color-paper-deep: #e7dabd;
+  --color-line: #dccfa9;
+  --color-line-soft: #e5dabd;
+  --color-accent: #a8701f;
+  --color-accent-loud: #dfa64a;
+  --color-accent-soft: #f0e0bd;
+  --color-deep: #1f3a30;
+  --color-deep-soft: #dfe8e2;
+  --color-signal: #8a3220;
+  --color-signal-soft: #f2ded8;
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-public-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-paper: var(--color-paper);
+  --color-paper-raised: var(--color-paper-raised);
+  --color-paper-deep: var(--color-paper-deep);
+  --color-line: var(--color-line);
+  --color-line-soft: var(--color-line-soft);
+  --color-accent: var(--color-accent);
+  --color-accent-loud: var(--color-accent-loud);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-deep: var(--color-deep);
+  --color-deep-soft: var(--color-deep-soft);
+  --color-signal: var(--color-signal);
+  --color-signal-soft: var(--color-signal-soft);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --container-content: 78rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  background: var(--color-paper);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" 1;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), ui-serif, serif;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
