@@ -3,6 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
+import SectionBanner from "@/components/ui/SectionBanner";
 import { Button } from "@/components/ui/Button";
 import { institutionSegments, institutionalNote } from "@/lib/content/institutions";
 
@@ -20,7 +21,7 @@ export default function InstitutionsPage() {
         title="La rigueur du diagnostic d'entreprise, appliquée à l'échelle publique et financière"
         lead="Architecture de filières, structuration de programmes, digitalisation de la performance publique, diagnostic pré-investissement : MEDEGNAN transpose sa méthodologie aux acteurs qui pilotent à grande échelle."
       >
-        <Button href="/contact" className="mt-8">
+        <Button href="/contact" variant="accent" className="mt-8">
           Soumettre une mission institutionnelle
         </Button>
       </PageHero>
@@ -29,9 +30,9 @@ export default function InstitutionsPage() {
         <div className="grid gap-6 sm:grid-cols-2">
           {institutionSegments.map((seg) => (
             <Link key={seg.slug} href={`/institutions/${seg.slug}`} className="group border border-line bg-paper-raised p-8">
-              <h2 className="font-display text-2xl">{seg.name}</h2>
+              <h2 className="text-2xl font-bold">{seg.name}</h2>
               <p className="mt-3 text-ink-soft">{seg.summary}</p>
-              <span className="mt-6 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
+              <span className="mt-6 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
                 Découvrir
               </span>
             </Link>
@@ -39,8 +40,9 @@ export default function InstitutionsPage() {
         </div>
       </Section>
 
-      <Section tone="raised">
-        <p className="max-w-2xl border-l-2 border-accent pl-6 text-ink-soft">{institutionalNote}</p>
+      <Section tone="raised" className="!py-0">
+        <SectionBanner label="Cadre" title="Comment nous engageons une collaboration institutionnelle" tone="acier" className="-mx-6 md:-mx-10" />
+        <p className="max-w-2xl py-10 pb-20 text-ink-soft md:pb-28">{institutionalNote}</p>
       </Section>
     </>
   );

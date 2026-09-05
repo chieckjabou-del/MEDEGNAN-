@@ -58,4 +58,4 @@ export const institutionSegments: InstitutionSegment[] = [
 ];
 
 export const institutionalNote =
-  "MEDEGNAN CONSULTING présente ici une capacité d'intervention construite à partir de sa méthodologie appliquée aux entreprises. Le cabinet n'a pas encore livré de mission institutionnelle publiable à ce jour — toute collaboration avec une institution démarre par un diagnostic de cadrage, comme pour une entreprise.";
+  "MEDEGNAN CONSULTING présente ici une capacité d'intervention construite à partir de sa méthodologie appliquée aux entreprises. Toute collaboration avec une institution démarre par un diagnostic de cadrage, comme pour une entreprise.";

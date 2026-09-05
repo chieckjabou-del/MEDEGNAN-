@@ -8,7 +8,7 @@ import { site } from "@/lib/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contacter MEDEGNAN CONSULTING — Cotonou, Bénin.",
+  description: "Contacter MEDEGNAN CONSULTING, Cotonou, Bénin.",
 };
 
 export default function ContactPage() {

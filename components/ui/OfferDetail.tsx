@@ -17,10 +17,7 @@ export default function OfferDetail({ offer }: { offer: Offer }) {
           <p className="text-xs font-medium uppercase tracking-wide text-ink-faint">Ce que comprend la mission</p>
           <ul className="mt-2 flex flex-col gap-1.5 text-ink-soft">
             {offer.includes.map((i) => (
-              <li key={i} className="flex gap-2">
-                <span aria-hidden="true" className="text-accent">
-                  —
-                </span>
+              <li key={i} className="border-b border-line-soft py-1.5 last:border-b-0">
                 {i}
               </li>
             ))}

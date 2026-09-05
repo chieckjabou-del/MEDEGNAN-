@@ -20,7 +20,7 @@ export const site = {
   },
   legal: {
     entityNote:
-      "Informations d'immatriculation en cours de consolidation — mentions légales complètes à publier après validation par la direction du cabinet.",
+      "Informations d'immatriculation en cours de consolidation. Mentions légales complètes à publier après validation par la direction du cabinet.",
   },
 } as const;
 

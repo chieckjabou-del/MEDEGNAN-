@@ -16,7 +16,7 @@ export default function DemanderDiagnosticPage() {
       <PageHero
         kicker="Première étape"
         title="Commençons par comprendre votre situation"
-        lead="Quelques questions rapides, puis quelques précisions si vous le souhaitez. Un consultant MEDEGNAN vous répond directement — aucun formulaire automatisé ne remplace la conversation qui suit."
+        lead="Quelques questions rapides, puis quelques précisions si vous le souhaitez. Un consultant MEDEGNAN vous répond directement. Aucun formulaire automatisé ne remplace la conversation qui suit."
       />
       <Section tone="paper">
         <div className="mx-auto max-w-2xl">

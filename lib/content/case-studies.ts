@@ -34,7 +34,7 @@ export const caseStudies: CaseStudyRecord[] = [
     result:
       "Objectif de marge nette porté à 5–7 % (contre 1,8 % au diagnostic), pour un gain estimé de 13 à 21 M FCFA par an une fois le plan pleinement exécuté.",
     resultCaveat:
-      "Mission en cours d'exécution — ce résultat est un objectif chiffré du plan validé avec le client, pas encore un résultat clos et audité.",
+      "Mission en cours d'exécution. Ce résultat est un objectif chiffré du plan validé avec le client, pas encore un résultat clos et audité.",
   },
   {
     slug: "cosmetique-benin",
@@ -53,7 +53,7 @@ export const caseStudies: CaseStudyRecord[] = [
     intervention:
       "Audit documentaire complet, restitution à la direction, plan de régularisation par étapes.",
     result:
-      "Un risque fiscal de plus de 3,4 M FCFA sur la période auditée a été détecté et mis sous plan de contrôle — une exposition que l'entreprise ignorait avant la mission.",
+      "Un risque fiscal de plus de 3,4 M FCFA sur la période auditée a été détecté et mis sous plan de contrôle. Une exposition que l'entreprise ignorait avant la mission.",
   },
   {
     slug: "industrie-cameroun",
@@ -72,7 +72,7 @@ export const caseStudies: CaseStudyRecord[] = [
       "Reconstruction du diagnostic, mise sous contrôle croisé des flux de production, comité de pilotage hebdomadaire.",
     result:
       "Mission en cours, classée en vigilance renforcée. Retenue ici comme illustration de la profondeur du diagnostic MEDEGNAN, pas comme succès clos.",
-    resultCaveat: "Mission active — aucun résultat financier final à ce stade.",
+    resultCaveat: "Mission active. Aucun résultat financier final à ce stade.",
   },
   {
     slug: "agro-distribution-cameroun",
@@ -88,6 +88,6 @@ export const caseStudies: CaseStudyRecord[] = [
     decision: "Structuration du partenariat encadrant l'extension régionale.",
     intervention: "Mission de structuration partenariale, en cours de déploiement.",
     result:
-      "Le premier mandat a été livré à 100 %, ce qui a conduit le client à engager une seconde mission avec MEDEGNAN — un signal de confiance plus parlant qu'un chiffre isolé.",
+      "Le premier mandat a été livré à 100 %, ce qui a conduit le client à engager une seconde mission avec MEDEGNAN. Un signal de confiance plus parlant qu'un chiffre isolé.",
   },
 ];

@@ -2,7 +2,7 @@ export const methodologyIntro = {
   title: "MEDEGNAN CORE",
   kicker: "Méthodologie",
   lead:
-    "Un système, pas une opinion. Chaque mission suit une séquence de diagnostic, décision, intervention et pilotage — construite pour que la transformation ne dépende ni de l'humeur du moment, ni de la mémoire d'un seul consultant.",
+    "Un système, pas une opinion. Chaque mission suit une séquence de diagnostic, décision, intervention et pilotage, construite pour que la transformation ne dépende ni de l'humeur du moment, ni de la mémoire d'un seul consultant.",
   principle:
     "On ne peut pas accélérer ce qui n'est pas stable. On ne peut pas scaler ce qui n'est pas structuré.",
 };
@@ -11,7 +11,7 @@ export const diagnosticTools = [
   {
     name: "Diagnostic 360°",
     description:
-      "Une lecture croisée de l'attractivité du marché, de la puissance concurrentielle, de la solidité interne et de la capacité d'évolution de l'entreprise — pour situer objectivement où elle se trouve avant de décider où l'emmener.",
+      "Une lecture croisée de l'attractivité du marché, de la puissance concurrentielle, de la solidité interne et de la capacité d'évolution de l'entreprise, pour situer objectivement où elle se trouve avant de décider où l'emmener.",
   },
   {
     name: "Indice de risque",
@@ -21,7 +21,7 @@ export const diagnosticTools = [
   {
     name: "Score de solidité organisationnelle",
     description:
-      "Une évaluation de la structure, du système d'information de gestion, des contraintes dominantes, de la résilience et de la gouvernance — pour objectiver la maturité réelle de l'organisation, au-delà des impressions.",
+      "Une évaluation de la structure, du système d'information de gestion, des contraintes dominantes, de la résilience et de la gouvernance, pour objectiver la maturité réelle de l'organisation, au-delà des impressions.",
   },
   {
     name: "Lecture du modèle économique",

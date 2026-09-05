@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
-import Section, { Kicker } from "@/components/ui/Section";
+import Section from "@/components/ui/Section";
+import SectionBanner from "@/components/ui/SectionBanner";
 import OfferCard from "@/components/ui/OfferCard";
 import { Button } from "@/components/ui/Button";
 import { offers } from "@/lib/content/offers";
@@ -29,20 +30,19 @@ export default function EntreprisesPage() {
         title="Un point d'entrée adapté à votre situation réelle, pas à votre budget supposé"
         lead="PME, groupe familial, entreprise en croissance : MEDEGNAN commence toujours par un diagnostic, puis oriente vers la mission adaptée à votre niveau de maturité."
       >
-        <Button href="/demander-un-diagnostic" className="mt-8">
+        <Button href="/demander-un-diagnostic" variant="accent" className="mt-8">
           Évaluer mon entreprise
         </Button>
       </PageHero>
 
-      <Section tone="paper">
-        <Kicker>Où en êtes-vous ?</Kicker>
-        <h2 className="mt-3 font-display text-3xl md:text-4xl text-balance">Cinq situations, cinq points d&apos;entrée</h2>
-        <div className="mt-10 flex flex-col divide-y divide-line border-y border-line">
+      <Section tone="paper" className="!py-0">
+        <SectionBanner label="Où en êtes-vous ?" title="Cinq situations, cinq points d'entrée" tone="navy" className="-mx-6 md:-mx-10" />
+        <div className="flex flex-col divide-y divide-line border-y border-line py-10 pb-20 md:pb-28">
           {stages.map((s) => (
             <a key={s.href} href={s.href} className="group grid items-center gap-2 py-5 md:grid-cols-[1fr_auto_auto]">
               <span className="text-lg">{s.archetype}</span>
-              <span className="font-mono text-xs uppercase tracking-wide text-accent md:text-right">{s.entry}</span>
-              <span className="text-sm underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent md:justify-self-end">
+              <span className="text-xs font-bold uppercase tracking-wide text-accent-hover md:text-right">{s.entry}</span>
+              <span className="text-sm underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover md:justify-self-end">
                 Découvrir
               </span>
             </a>
@@ -50,22 +50,21 @@ export default function EntreprisesPage() {
         </div>
       </Section>
 
-      <Section tone="raised">
-        <Kicker>Nos offres pour entreprises</Kicker>
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <Section tone="raised" className="!py-0">
+        <SectionBanner label="Catalogue" title="Nos offres pour entreprises" tone="violet" className="-mx-6 md:-mx-10" />
+        <div className="grid gap-6 py-10 pb-20 md:grid-cols-2 md:pb-28 lg:grid-cols-3">
           {offers.map((o) => (
             <OfferCard key={o.slug} offer={o} />
           ))}
         </div>
       </Section>
 
-      <Section tone="paper">
-        <Kicker>Trajectoire</Kicker>
-        <h2 className="mt-3 font-display text-3xl">Une progression par niveau de maturité</h2>
-        <ol className="mt-8 flex flex-col divide-y divide-line border-y border-line">
+      <Section tone="paper" className="!py-0">
+        <SectionBanner label="Trajectoire" title="Une progression par niveau de maturité" tone="teal" className="-mx-6 md:-mx-10" />
+        <ol className="flex flex-col divide-y divide-line border-y border-line py-10 pb-20 md:pb-28">
           {maturityLevels.map((m) => (
             <li key={m.level} className="flex items-center gap-4 py-3">
-              <span className="font-mono text-xs text-accent">N{m.level}</span>
+              <span className="text-xs font-bold text-accent-hover">N{m.level}</span>
               <span>{m.name}</span>
               <span className="ml-auto text-sm text-ink-faint">{m.duration}</span>
             </li>

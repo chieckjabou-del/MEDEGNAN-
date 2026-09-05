@@ -1,34 +1,14 @@
 import type { Metadata } from "next";
-import { Fraunces, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { site } from "@/lib/content/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const publicSans = Public_Sans({
-  variable: "--font-public-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://medegnan-consulting.vercel.app"),
   title: {
-    default: `${site.name} — ${site.shortBaseline}`,
-    template: `%s — ${site.name}`,
+    default: `${site.name} · ${site.shortBaseline}`,
+    template: `%s · ${site.name}`,
   },
   description: site.description,
   keywords: [
@@ -45,12 +25,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: site.name,
-    title: `${site.name} — ${site.shortBaseline}`,
+    title: `${site.name} · ${site.shortBaseline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.shortBaseline}`,
+    title: `${site.name} · ${site.shortBaseline}`,
     description: site.description,
   },
   robots: { index: true, follow: true },
@@ -61,7 +41,19 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: site.name,
   description: site.description,
-  areaServed: ["Bénin", "Côte d'Ivoire", "Burkina Faso", "Cameroun", "République démocratique du Congo"],
+  areaServed: [
+    "Bénin",
+    "Burkina Faso",
+    "Mali",
+    "Côte d'Ivoire",
+    "France",
+    "République démocratique du Congo",
+    "Guinée",
+    "Tchad",
+    "Sénégal",
+    "Cameroun",
+    "Comores",
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Cotonou",
@@ -74,11 +66,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="fr"
-      data-scroll-behavior="smooth"
-      className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} h-full antialiased`}
-    >
+    <html lang="fr" data-scroll-behavior="smooth" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <script
           type="application/ld+json"

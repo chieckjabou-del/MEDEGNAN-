@@ -6,7 +6,7 @@ import { whatsappLink } from "@/lib/whatsapp";
 
 const orgTypes = ["Entreprise privée", "Institution publique", "Fonds / investisseur", "Banque / institution financière", "Autre"];
 const sizes = ["Moins de 10 employés", "10 à 50 employés", "50 à 200 employés", "Plus de 200 employés"];
-const urgencies = ["Faible — exploratoire", "Modérée — dans les prochains mois", "Élevée — dans les prochaines semaines", "Critique — situation urgente"];
+const urgencies = ["Faible : exploratoire", "Modérée : dans les prochains mois", "Élevée : dans les prochaines semaines", "Critique : situation urgente"];
 const supportTypes = ["Audit Flash", "Diagnostic Stratégique", "Structuration", "Transformation", "Accélération / croissance", "Pilotage & accompagnement (Operating Partner)", "Je ne sais pas encore"];
 const budgets = ["Moins de 500 000 FCFA", "500 000 – 1 500 000 FCFA", "1 500 000 – 4 000 000 FCFA", "Plus de 4 000 000 FCFA", "À définir avec vous"];
 
@@ -31,7 +31,7 @@ type FormData = {
 
 function buildSummary(data: FormData) {
   return [
-    `Nouvelle demande de diagnostic — ${data.orgType}`,
+    `Nouvelle demande de diagnostic : ${data.orgType}`,
     ``,
     `Type d'organisation : ${data.orgType}`,
     `Secteur : ${data.secteur}`,
@@ -94,7 +94,7 @@ export default function QualificationForm() {
       // ou une erreur réseau est survenue. On ouvre un e-mail pré-rempli à la place.
     }
 
-    const subject = `Demande de diagnostic — ${data.orgType} — ${data.secteur || "secteur non précisé"}`;
+    const subject = `Demande de diagnostic : ${data.orgType} (${data.secteur || "secteur non précisé"})`;
     window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildSummary(data))}`;
     setStatus("sent-mailto");
   }
@@ -131,9 +131,9 @@ export default function QualificationForm() {
   return (
     <form onSubmit={step === 1 ? goToStep2 : handleSubmit} className="border border-line bg-paper p-6 md:p-10">
       <div className="mb-8 flex items-center gap-3 text-xs font-mono uppercase tracking-wide text-ink-faint">
-        <span className={step === 1 ? "text-accent" : ""}>01 · Votre situation</span>
-        <span aria-hidden="true">—</span>
-        <span className={step === 2 ? "text-accent" : ""}>02 · Précisions & coordonnées</span>
+        <span className={step === 1 ? "text-accent-hover" : ""}>01 · Votre situation</span>
+        <span aria-hidden="true">·</span>
+        <span className={step === 2 ? "text-accent-hover" : ""}>02 · Précisions & coordonnées</span>
       </div>
 
       {step === 1 && (

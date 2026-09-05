@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
-import Section, { Kicker } from "@/components/ui/Section";
+import Section from "@/components/ui/Section";
+import SectionBanner from "@/components/ui/SectionBanner";
 import OfferDetail from "@/components/ui/OfferDetail";
 import { offers } from "@/lib/content/offers";
 import { corePhases } from "@/lib/content/methodology";
@@ -28,10 +29,9 @@ export default function TransformationPage() {
         <OfferDetail offer={offer} />
       </Section>
 
-      <Section tone="raised">
-        <Kicker>Le rythme d&apos;une transformation MEDEGNAN CORE</Kicker>
-        <h2 className="mt-3 font-display text-3xl">Quatre phases, un ordre non négociable</h2>
-        <div className="mt-8">
+      <Section tone="raised" className="!py-0">
+        <SectionBanner label="Le rythme d'une transformation MEDEGNAN CORE" title="Quatre phases, un ordre non négociable" tone="rouge" className="-mx-6 md:-mx-10" />
+        <div className="py-10 pb-20 md:pb-28">
           <PhaseTimeline phases={corePhases} />
         </div>
       </Section>

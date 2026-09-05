@@ -10,12 +10,9 @@ export default function PhaseTimeline({ phases }: { phases: CorePhase[] }) {
           </span>
           <h3 className="mt-3 font-display text-xl">{phase.name}</h3>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">{phase.objective}</p>
-          <ul className="mt-4 flex flex-col gap-1.5 text-sm text-ink-soft">
+          <ul className="mt-4 flex flex-col gap-1.5 border-t border-line-soft text-sm text-ink-soft">
             {phase.focus.map((f) => (
-              <li key={f} className="flex gap-2">
-                <span aria-hidden="true" className="text-accent">
-                  —
-                </span>
+              <li key={f} className="border-b border-line-soft py-1.5 last:border-b-0">
                 {f}
               </li>
             ))}

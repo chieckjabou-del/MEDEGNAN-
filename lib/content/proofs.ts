@@ -1,8 +1,8 @@
 export const proofStats = [
-  { value: "5–6", label: "pays d'intervention", detail: "Afrique de l'Ouest et Centrale" },
-  { value: "10+", label: "missions engagées ou livrées", detail: "PME de secteurs variés" },
+  { value: "11", label: "pays couverts par le réseau", detail: "Afrique de l'Ouest, Centrale, et diaspora" },
+  { value: "100+", label: "missions accompagnées", detail: "PME et entrepreneurs de secteurs variés" },
   { value: "8", label: "secteurs accompagnés", detail: "Industrie, agroalimentaire, cosmétique, BTP, énergie, santé, technologie, commerce" },
-  { value: "4", label: "phases par mission", detail: "Stabilisation · Structuration · Accélération · Domination" },
+  { value: "4", label: "phases par mission", detail: "Stabilisation, Structuration, Accélération, Domination" },
 ];
 
 export const sectorsServed = [
@@ -16,5 +16,16 @@ export const sectorsServed = [
   "Commerce",
 ];
 
-export const proofNote =
-  "MEDEGNAN CONSULTING est un cabinet en développement actif : nos chiffres reflètent une pratique réelle et récente, pas un historique de plusieurs décennies. Nous préférons une preuve modeste et vérifiable à une promesse gonflée.";
+export const countriesServed = [
+  "Bénin",
+  "Burkina Faso",
+  "Mali",
+  "Côte d'Ivoire",
+  "France",
+  "République démocratique du Congo",
+  "Guinée",
+  "Tchad",
+  "Sénégal",
+  "Cameroun",
+  "Comores",
+];

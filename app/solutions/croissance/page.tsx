@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
-import Section, { Kicker } from "@/components/ui/Section";
+import Section from "@/components/ui/Section";
+import SectionBanner from "@/components/ui/SectionBanner";
 import OfferDetail from "@/components/ui/OfferDetail";
 import { offers } from "@/lib/content/offers";
 
@@ -30,10 +31,10 @@ export default function CroissancePage() {
         </div>
       </Section>
 
-      <Section tone="raised">
-        <Kicker>Financer / préparer l&apos;investissement</Kicker>
-        <p className="mt-4 max-w-2xl text-ink-soft">
-          Pour les entreprises à fort potentiel, MEDEGNAN structure le dossier — juridique, financier, narratif — avant
+      <Section tone="raised" className="!py-0">
+        <SectionBanner label="Financer" title="Préparer l'investissement" tone="rouge" className="-mx-6 md:-mx-10" />
+        <p className="max-w-2xl py-10 pb-20 text-ink-soft md:pb-28">
+          Pour les entreprises à fort potentiel, MEDEGNAN structure le dossier (juridique, financier, narratif) avant
           toute mise en relation avec un fonds ou une banque. Nous ne promettons pas de lever des fonds à votre place :
           nous construisons le dossier qui rend cette conversation possible.
         </p>

@@ -44,7 +44,7 @@ export async function POST(request: Request) {
       from: "MEDEGNAN Site <onboarding@resend.dev>",
       to: site.contact.email,
       replyTo: data.email,
-      subject: `Demande de diagnostic — ${data.orgType} — ${data.secteur || "secteur non précisé"}`,
+      subject: `Demande de diagnostic : ${data.orgType} (${data.secteur || "secteur non précisé"})`,
       html,
     });
     return NextResponse.json({ ok: true });

@@ -4,6 +4,9 @@
  * Charte graphique officielle MEDEGNAN CONSULTING — MDDS v1.0.
  * Source unique de la palette : ne jamais écrire une couleur en dur
  * dans un composant, toujours passer par ces variables.
+ * Vérifiée visuellement sur les documents réels du cabinet (MC-CANEVAS-V1) :
+ * page de garde et bandeaux de section en aplat de couleur, texte blanc en
+ * gras, typographie sans-serif sobre (Arial), aucune puce à tiret.
  */
 :root {
   --mc-navy-profond: #0d2137;
@@ -42,9 +45,10 @@
   --color-resultat: var(--mc-vert);
   --color-processus: var(--mc-bleu-acier);
 
-  --font-display: var(--font-fraunces);
-  --font-body: var(--font-public-sans);
-  --font-mono: var(--font-plex-mono);
+  --font-display: var(--mc-font);
+  --font-body: var(--mc-font);
+  --font-mono: var(--mc-font);
+  --mc-font: Arial, Helvetica, "Liberation Sans", sans-serif;
 }
 
 @theme inline {
@@ -93,15 +97,14 @@ html {
 body {
   background: var(--color-paper);
   color: var(--color-ink-soft);
-  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  font-feature-settings: "ss01" 1;
+  font-family: var(--mc-font);
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display), ui-serif, serif;
+  font-family: var(--mc-font);
   color: var(--color-ink);
-  letter-spacing: -0.01em;
-  font-weight: 500;
+  letter-spacing: 0;
+  font-weight: 700;
 }
 
 ::selection {

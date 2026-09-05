@@ -9,12 +9,9 @@ export default function OfferCard({ offer }: { offer: Offer }) {
       <p className="mt-3 text-sm leading-relaxed text-ink-soft">{offer.summary}</p>
       <p className="mt-4 text-xs font-medium uppercase tracking-wide text-ink-faint">Pour qui</p>
       <p className="text-sm text-ink-soft">{offer.forWhom}</p>
-      <ul className="mt-4 flex flex-col gap-1.5 border-t border-line pt-4 text-sm text-ink-soft">
+      <ul className="mt-4 flex flex-col gap-1.5 border-t border-line pt-3 text-sm text-ink-soft">
         {offer.includes.map((i) => (
-          <li key={i} className="flex gap-2">
-            <span aria-hidden="true" className="text-accent">
-              —
-            </span>
+          <li key={i} className="border-b border-line-soft py-1.5 last:border-b-0">
             {i}
           </li>
         ))}

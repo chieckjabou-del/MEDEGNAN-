@@ -24,7 +24,7 @@ export default function MentionsLegalesPage() {
           <div>
             <h2 className="font-display text-xl text-ink">Contact</h2>
             <p className="mt-2">
-              {site.contact.email} — {site.contact.phoneBenin}
+              {site.contact.email} · {site.contact.phoneBenin}
             </p>
           </div>
           <div>

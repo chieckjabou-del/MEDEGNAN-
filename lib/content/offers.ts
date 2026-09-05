@@ -33,7 +33,7 @@ export const offers: Offer[] = [
     category: "Diagnostiquer",
     name: "Diagnostic Stratégique",
     summary:
-      "Une lecture complète de la situation réelle de l'entreprise — financière, organisationnelle et concurrentielle — pour faire apparaître ce que les tableaux de bord habituels ne montrent pas.",
+      "Une lecture complète de la situation réelle de l'entreprise (financière, organisationnelle et concurrentielle), pour faire apparaître ce que les tableaux de bord habituels ne montrent pas.",
     forWhom: "PME et entreprises en croissance qui veulent une base de décision fiable avant d'agir.",
     includes: [
       "Reconstruction financière indépendante (marge réelle, trésorerie, dépendances)",
@@ -50,7 +50,7 @@ export const offers: Offer[] = [
     category: "Diagnostiquer",
     name: "Audit Documentaire Approfondi",
     summary:
-      "Une revue rigoureuse de la gouvernance, des contrats, de la fiscalité et des process — pour sécuriser une entreprise avant une décision majeure.",
+      "Une revue rigoureuse de la gouvernance, des contrats, de la fiscalité et des process, pour sécuriser une entreprise avant une décision majeure.",
     forWhom: "Dirigeants confrontés à un doute sur la gouvernance, une exposition fiscale ou juridique, ou une opération à venir (cession, levée, partenariat).",
     includes: [
       "Cartographie des risques juridiques et fiscaux",
@@ -65,7 +65,7 @@ export const offers: Offer[] = [
     category: "Structurer",
     name: "Structuration & Optimisation PME",
     summary:
-      "La mise en place des systèmes permanents — organisation, delegation, tableaux de bord — qui transforment une entreprise dépendante de son dirigeant en entreprise pilotable.",
+      "La mise en place des systèmes permanents (organisation, délégation, tableaux de bord) qui transforment une entreprise dépendante de son dirigeant en entreprise pilotable.",
     forWhom: "Entreprises stabilisées qui veulent sortir du pilotage au ressenti.",
     includes: [
       "Organigramme fonctionnel et fiches de poste",
@@ -81,7 +81,7 @@ export const offers: Offer[] = [
     category: "Transformer",
     name: "Restructuration Complexe",
     summary:
-      "Pour les situations de gouvernance en tension, de conflit entre associés ou de redressement — une intervention qui clarifie, arbitre et reconstruit.",
+      "Pour les situations de gouvernance en tension, de conflit entre associés ou de redressement, une intervention qui clarifie, arbitre et reconstruit.",
     forWhom: "Entreprises en difficulté structurelle ou en conflit de gouvernance.",
     includes: [
       "Clarification juridique et actionnariale",
@@ -142,7 +142,7 @@ export const offers: Offer[] = [
     category: "Accompagner",
     name: "Operating Partner",
     summary:
-      "Un suivi régulier aux côtés de la direction — animation des revues, aide à la décision, ajustement de trajectoire — au-delà de la mission ponctuelle.",
+      "Un suivi régulier aux côtés de la direction (animation des revues, aide à la décision, ajustement de trajectoire) au-delà de la mission ponctuelle.",
     forWhom: "Dirigeants qui veulent un partenaire de pilotage dans la durée, pas seulement un rapport.",
     includes: [
       "Revues de direction périodiques",

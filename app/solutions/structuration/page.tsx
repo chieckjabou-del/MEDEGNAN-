@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
-import Section, { Kicker } from "@/components/ui/Section";
+import Section from "@/components/ui/Section";
+import SectionBanner from "@/components/ui/SectionBanner";
 import OfferDetail from "@/components/ui/OfferDetail";
 import { offers } from "@/lib/content/offers";
 
@@ -26,19 +27,19 @@ export default function StructurationPage() {
         <OfferDetail offer={offer} />
       </Section>
 
-      <Section tone="raised">
-        <Kicker>Ce que la phase de structuration installe</Kicker>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          <div className="border-t-2 border-ink pt-4">
-            <h3 className="font-display text-lg">Organisation</h3>
+      <Section tone="raised" className="!py-0">
+        <SectionBanner label="Livrables" title="Ce que la phase de structuration installe" tone="violet" className="-mx-6 md:-mx-10" />
+        <div className="grid gap-6 py-10 pb-20 md:grid-cols-3 md:pb-28">
+          <div className="border-t-2 border-offre pt-4">
+            <h3 className="text-lg font-bold">Organisation</h3>
             <p className="mt-2 text-sm text-ink-soft">Organigramme fonctionnel, fiches de poste, clarté des rôles.</p>
           </div>
-          <div className="border-t-2 border-ink pt-4">
-            <h3 className="font-display text-lg">Procédures</h3>
+          <div className="border-t-2 border-offre pt-4">
+            <h3 className="text-lg font-bold">Procédures</h3>
             <p className="mt-2 text-sm text-ink-soft">Standards écrits par fonction, remplaçant la mémoire orale du dirigeant.</p>
           </div>
-          <div className="border-t-2 border-ink pt-4">
-            <h3 className="font-display text-lg">Pilotage</h3>
+          <div className="border-t-2 border-offre pt-4">
+            <h3 className="text-lg font-bold">Pilotage</h3>
             <p className="mt-2 text-sm text-ink-soft">Tableau de bord opérationnel et rythme de gouvernance partagé.</p>
           </div>
         </div>
