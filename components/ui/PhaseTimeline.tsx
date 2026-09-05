@@ -5,7 +5,7 @@ export default function PhaseTimeline({ phases }: { phases: CorePhase[] }) {
     <ol className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-4">
       {phases.map((phase) => (
         <li key={phase.code} className="flex flex-col bg-paper p-6">
-          <span className="font-mono text-xs uppercase tracking-wide text-accent">
+          <span className="font-mono text-xs font-bold uppercase tracking-wide text-ink-soft">
             {phase.code} · {phase.window}
           </span>
           <h3 className="mt-3 font-display text-xl">{phase.name}</h3>

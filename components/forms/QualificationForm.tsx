@@ -131,9 +131,9 @@ export default function QualificationForm() {
   return (
     <form onSubmit={step === 1 ? goToStep2 : handleSubmit} className="border border-line bg-paper p-6 md:p-10">
       <div className="mb-8 flex items-center gap-3 text-xs font-mono uppercase tracking-wide text-ink-faint">
-        <span className={step === 1 ? "text-accent-hover" : ""}>01 · Votre situation</span>
+        <span className={step === 1 ? "font-bold text-ink-soft" : ""}>01 · Votre situation</span>
         <span aria-hidden="true">·</span>
-        <span className={step === 2 ? "text-accent-hover" : ""}>02 · Précisions & coordonnées</span>
+        <span className={step === 2 ? "font-bold text-ink-soft" : ""}>02 · Précisions & coordonnées</span>
       </div>
 
       {step === 1 && (

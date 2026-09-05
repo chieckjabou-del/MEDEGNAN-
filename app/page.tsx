@@ -63,7 +63,7 @@ export default function HomePage() {
         <div className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
           <Link href="/solutions/entreprises" className="group flex flex-col justify-between bg-paper p-8 md:p-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wide text-accent-hover">Entreprises</span>
+              <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Entreprises</span>
               <h3 className="mt-3 text-2xl font-bold md:text-3xl">PME, groupes, entrepreneurs</h3>
               <p className="mt-4 max-w-md text-ink-soft">
                 Diagnostiquer, structurer, accélérer ou piloter une entreprise, du dirigeant qui sort du chaos initial
@@ -71,12 +71,12 @@ export default function HomePage() {
               </p>
             </div>
             <span className="mt-8 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
-              Solutions entreprises
+              Cliquez ici : solutions entreprises →
             </span>
           </Link>
           <Link href="/solutions/institutions" className="group flex flex-col justify-between bg-paper p-8 md:p-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wide text-accent-hover">Institutions</span>
+              <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Institutions</span>
               <h3 className="mt-3 text-2xl font-bold md:text-3xl">États, ministères, fonds, banques</h3>
               <p className="mt-4 max-w-md text-ink-soft">
                 Diagnostic de filière, structuration de programmes, digitalisation de la performance publique et
@@ -84,7 +84,7 @@ export default function HomePage() {
               </p>
             </div>
             <span className="mt-8 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
-              Solutions institutions
+              Cliquez ici : solutions institutions →
             </span>
           </Link>
         </div>
@@ -138,8 +138,8 @@ export default function HomePage() {
         <div className="py-10 pb-20 md:pb-28">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <p className="max-w-xl text-ink-soft">Problème, diagnostic, décision, intervention, résultat.</p>
-            <Link href="/etudes-de-cas" className="text-sm font-medium underline decoration-accent decoration-2 underline-offset-4">
-              Toutes les études de cas
+            <Link href="/etudes-de-cas" className="text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
+              Cliquez ici : toutes les études de cas →
             </Link>
           </div>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -192,7 +192,7 @@ export default function HomePage() {
               <h3 className="text-lg font-bold">{seg.name}</h3>
               <p className="mt-2 text-sm text-ink-soft">{seg.summary}</p>
               <span className="mt-4 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
-                En savoir plus
+                Cliquez ici : en savoir plus →
               </span>
             </Link>
           ))}

@@ -24,7 +24,7 @@
 
   --color-ink: var(--mc-navy-profond);
   --color-ink-soft: var(--mc-texte);
-  --color-ink-faint: #6b7684;
+  --color-ink-faint: #5a6472;
   --color-paper: #ffffff;
   --color-paper-raised: var(--mc-bleu-tres-clair);
   --color-paper-deep: #dfe9f6;
@@ -86,25 +86,27 @@
   }
 }
 
-* {
-  border-color: var(--color-line);
-}
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
 
-html {
-  background: var(--color-paper);
-}
+  html {
+    background: var(--color-paper);
+  }
 
-body {
-  background: var(--color-paper);
-  color: var(--color-ink-soft);
-  font-family: var(--mc-font);
-}
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink-soft);
+    font-family: var(--mc-font);
+  }
 
-h1, h2, h3, h4 {
-  font-family: var(--mc-font);
-  color: var(--color-ink);
-  letter-spacing: 0;
-  font-weight: 700;
+  h1, h2, h3, h4 {
+    font-family: var(--mc-font);
+    color: var(--color-ink);
+    letter-spacing: 0;
+    font-weight: 700;
+  }
 }
 
 ::selection {

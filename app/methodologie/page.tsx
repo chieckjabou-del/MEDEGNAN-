@@ -66,12 +66,12 @@ export default function MethodologiePage() {
       <Section tone="raised">
         <div className="grid gap-10 md:grid-cols-2">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-accent-hover">Rythme de mission</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">Rythme de mission</p>
             <h2 className="mt-3 text-2xl font-bold">Un cycle constant, quel que soit le niveau</h2>
             <ol className="mt-6 flex flex-col gap-3">
               {executionRhythm.map((r, i) => (
                 <li key={r.label} className="flex items-baseline gap-3 border-b border-line pb-3">
-                  <span className="text-xs font-bold text-accent-hover">0{i + 1}</span>
+                  <span className="text-xs font-bold text-ink-soft">0{i + 1}</span>
                   <span className="font-medium">{r.label}</span>
                   <span className="ml-auto text-sm text-ink-faint">{r.detail}</span>
                 </li>
@@ -79,7 +79,7 @@ export default function MethodologiePage() {
             </ol>
           </div>
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-accent-hover">Gouvernance de mission</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">Gouvernance de mission</p>
             <h2 className="mt-3 text-2xl font-bold">Un rythme de pilotage partagé avec la direction</h2>
             <ol className="mt-6 flex flex-col gap-3">
               {governanceCadence.map((g) => (

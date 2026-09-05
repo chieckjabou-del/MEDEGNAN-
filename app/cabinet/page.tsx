@@ -26,14 +26,14 @@ export default function CabinetPage() {
         <SectionBanner label="Positionnement" title="Vision et mission" tone="navy" className="-mx-6 md:-mx-10" />
         <div className="grid gap-10 py-10 pb-20 md:grid-cols-2 md:pb-28">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-accent-hover">Vision</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">Vision</p>
             <p className="mt-3 text-2xl font-bold leading-snug text-balance">
               Devenir le cabinet de référence en Afrique francophone pour la transformation stratégique et
               opérationnelle des PME, en alliant méthodologies éprouvées et technologies émergentes.
             </p>
           </div>
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-accent-hover">Mission</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">Mission</p>
             <p className="mt-3 text-lg leading-relaxed text-ink-soft text-pretty">
               Accompagner les entrepreneurs et dirigeants à structurer, développer et digitaliser leurs entreprises
               selon un système reproductible et mesurable, du chaos initial à la scalabilité.
@@ -64,21 +64,21 @@ export default function CabinetPage() {
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             <div className="border border-line p-6">
-              <p className="text-xs font-bold uppercase tracking-wide text-accent-hover">Gérance et direction de mission</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">Gérance et direction de mission</p>
               <h3 className="mt-2 text-lg font-bold">Direction des opérations</h3>
               <p className="mt-2 text-sm text-ink-soft">
                 Supervision des missions, structuration des partenariats, gouvernance du cabinet.
               </p>
             </div>
             <div className="border border-line p-6">
-              <p className="text-xs font-bold uppercase tracking-wide text-accent-hover">Associé exécutif</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">Associé exécutif</p>
               <h3 className="mt-2 text-lg font-bold">Fondation et orientation stratégique</h3>
               <p className="mt-2 text-sm text-ink-soft">
                 Orientation stratégique du cabinet et conception de la méthodologie MEDEGNAN CORE.
               </p>
             </div>
             <div className="border border-line p-6">
-              <p className="text-xs font-bold uppercase tracking-wide text-accent-hover">Consultants référents</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-ink-soft">Consultants référents</p>
               <h3 className="mt-2 text-lg font-bold">Diagnostic et structuration</h3>
               <p className="mt-2 text-sm text-ink-soft">
                 Conduite des missions de diagnostic stratégique et de structuration industrielle sur le terrain.

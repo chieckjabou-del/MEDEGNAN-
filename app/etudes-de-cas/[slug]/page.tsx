@@ -51,7 +51,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/etudes-de-ca
           </h1>
           <p className="mt-4 max-w-2xl text-ink-soft">{study.scale}</p>
           {study.metric && (
-            <p className="mt-6 font-mono text-3xl tabular text-accent">{study.metric.value}</p>
+            <p className="mt-6 font-mono text-3xl tabular text-accent-hover">{study.metric.value}</p>
           )}
           {study.metric && <p className="text-sm text-ink-faint">{study.metric.label}</p>}
         </Container>
@@ -62,7 +62,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/etudes-de-ca
           {steps.map((step, i) => (
             <div key={step.key} className="grid gap-4 md:grid-cols-[10rem_1fr] md:gap-10">
               <div className="flex items-baseline gap-3 md:flex-col md:items-start md:gap-1">
-                <span className="font-mono text-xs text-accent">0{i + 1}</span>
+                <span className="font-mono text-xs text-ink-soft">0{i + 1}</span>
                 <Kicker>{step.label}</Kicker>
               </div>
               <p className="max-w-2xl text-lg leading-relaxed text-ink-soft text-pretty">

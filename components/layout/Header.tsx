@@ -7,8 +7,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-(--container-content) items-center justify-between px-6 md:px-10">
-        <Link href="/" className="font-display text-lg tracking-tight">
-          MEDEGNAN <span className="text-accent">CONSULTING</span>
+        <Link href="/" className="font-display text-xl tracking-tight">
+          MEDEGNAN <span className="font-bold text-accent-hover">CONSULTING</span>
         </Link>
 
         <nav aria-label="Navigation principale" className="hidden xl:block">

@@ -32,7 +32,7 @@ export default function Section({
 
 export function Kicker({ children, invert = false }: { children: ReactNode; invert?: boolean }) {
   return (
-    <p className={`font-mono text-xs uppercase tracking-[0.18em] ${invert ? "text-accent-loud" : "text-accent"}`}>
+    <p className={`font-mono text-xs font-bold uppercase tracking-[0.18em] ${invert ? "text-accent-loud" : "text-ink-soft"}`}>
       {children}
     </p>
   );

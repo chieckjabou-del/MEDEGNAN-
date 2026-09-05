@@ -41,9 +41,9 @@ export default function EntreprisesPage() {
           {stages.map((s) => (
             <a key={s.href} href={s.href} className="group grid items-center gap-2 py-5 md:grid-cols-[1fr_auto_auto]">
               <span className="text-lg">{s.archetype}</span>
-              <span className="text-xs font-bold uppercase tracking-wide text-accent-hover md:text-right">{s.entry}</span>
+              <span className="text-xs font-bold uppercase tracking-wide text-ink-soft md:text-right">{s.entry}</span>
               <span className="text-sm underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover md:justify-self-end">
-                Découvrir
+                Cliquez ici : découvrir →
               </span>
             </a>
           ))}
@@ -64,7 +64,7 @@ export default function EntreprisesPage() {
         <ol className="flex flex-col divide-y divide-line border-y border-line py-10 pb-20 md:pb-28">
           {maturityLevels.map((m) => (
             <li key={m.level} className="flex items-center gap-4 py-3">
-              <span className="text-xs font-bold text-accent-hover">N{m.level}</span>
+              <span className="text-xs font-bold text-ink-soft">N{m.level}</span>
               <span>{m.name}</span>
               <span className="ml-auto text-sm text-ink-faint">{m.duration}</span>
             </li>

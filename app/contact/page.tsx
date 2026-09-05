@@ -27,18 +27,18 @@ export default function ContactPage() {
             <Kicker>Coordonnées</Kicker>
             <ul className="mt-4 flex flex-col gap-3 text-lg">
               <li>
-                <a href={`mailto:${site.contact.email}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent">
+                <a href={`mailto:${site.contact.email}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
                   {site.contact.email}
                 </a>
               </li>
               <li>
-                <a href={`tel:${site.contact.phoneBenin.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent">
+                <a href={`tel:${site.contact.phoneBenin.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
                   {site.contact.phoneBenin}
                 </a>{" "}
                 <span className="text-sm text-ink-faint">(Bénin, WhatsApp)</span>
               </li>
               <li>
-                <a href={`tel:${site.contact.phoneFrance.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent">
+                <a href={`tel:${site.contact.phoneFrance.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
                   {site.contact.phoneFrance}
                 </a>{" "}
                 <span className="text-sm text-ink-faint">(France)</span>
