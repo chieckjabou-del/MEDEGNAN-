@@ -10,7 +10,7 @@ export default function Header() {
           MEDEGNAN <span className="text-accent">CONSULTING</span>
         </Link>
 
-        <nav aria-label="Navigation principale" className="hidden md:block">
+        <nav aria-label="Navigation principale" className="hidden xl:block">
           <ul className="flex items-center gap-1">
             {primaryNav.map((item) =>
               item.children ? (
@@ -50,7 +50,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <a href={`tel:${site.contact.phoneBenin.replace(/\s/g, "")}`} className="text-sm text-ink-soft hover:text-ink">
             {site.contact.phoneBenin}
           </a>
@@ -61,6 +61,12 @@ export default function Header() {
             Demander un diagnostic
           </Link>
         </div>
+        <Link
+          href="/demander-un-diagnostic"
+          className="hidden items-center justify-center rounded-sm bg-ink px-4 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-ink/85 sm:inline-flex xl:hidden"
+        >
+          Diagnostic
+        </Link>
 
         <MobileNav items={primaryNav} />
       </div>
