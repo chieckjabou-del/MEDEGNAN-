@@ -72,7 +72,7 @@ export default function MobileNav({ items }: { items: NavItem[] }) {
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper"
             >
-              Demander un diagnostic
+              Réserver mon Audit Flash
             </Link>
           </div>
         </div>

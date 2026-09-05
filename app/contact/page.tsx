@@ -52,7 +52,7 @@ export default function ContactPage() {
           <div>
             <Kicker>Selon votre profil</Kicker>
             <div className="mt-4 flex flex-col gap-3">
-              <Button href="/demander-un-diagnostic">Demander un diagnostic</Button>
+              <Button href="/demander-un-diagnostic">Réserver mon Audit Flash</Button>
               <Button href="/demander-un-diagnostic" variant="secondary">
                 Évaluer mon entreprise
               </Button>

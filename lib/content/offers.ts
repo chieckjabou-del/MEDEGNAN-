@@ -12,6 +12,23 @@ export type Offer = {
 
 export const offers: Offer[] = [
   {
+    // Prix et positionnement "porte d'entrée obligatoire" confirmés par la
+    // direction du cabinet (politique tarifaire interne, référence Audit Flash).
+    slug: "audit-flash",
+    category: "Diagnostiquer",
+    name: "Audit Flash",
+    summary:
+      "Le point d'entrée de toute relation avec MEDEGNAN : une lecture rapide et ciblée de votre situation, pour objectiver ce qui mérite une attention immédiate avant d'aller plus loin.",
+    forWhom: "Tout dirigeant ou organisation qui souhaite une première lecture fiable, rapide et peu engageante.",
+    includes: [
+      "Entretien de cadrage avec un consultant MEDEGNAN",
+      "Lecture ciblée des points de vigilance immédiats",
+      "Recommandation sur la suite à donner (ou non)",
+    ],
+    priceRange: "250 000 FCFA",
+    cta: { label: "Réserver mon Audit Flash", href: "/demander-un-diagnostic" },
+  },
+  {
     slug: "diagnostic-strategique",
     category: "Diagnostiquer",
     name: "Diagnostic Stratégique",
@@ -25,7 +42,7 @@ export const offers: Offer[] = [
       "Rapport de diagnostic et recommandations priorisées",
     ],
     priceRange: "250 000 – 450 000 FCFA",
-    priceNote: "Mission Type A. Le périmètre peut évoluer si le diagnostic révèle une réalité plus complexe.",
+    priceNote: "Mission de fond, généralement engagée après un Audit Flash. Le périmètre peut évoluer si le diagnostic révèle une réalité plus complexe.",
     cta: { label: "Demander un diagnostic", href: "/demander-un-diagnostic" },
   },
   {
@@ -123,7 +140,7 @@ export const offers: Offer[] = [
   {
     slug: "accompagnement-continu",
     category: "Accompagner",
-    name: "Accompagnement Continu",
+    name: "Operating Partner",
     summary:
       "Un suivi régulier aux côtés de la direction — animation des revues, aide à la décision, ajustement de trajectoire — au-delà de la mission ponctuelle.",
     forWhom: "Dirigeants qui veulent un partenaire de pilotage dans la durée, pas seulement un rapport.",

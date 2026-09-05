@@ -44,7 +44,7 @@ export default function HomePage() {
             institution, identifie ce qui freine sa performance, et accompagne l&apos;exécution jusqu&apos;au résultat mesuré.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <Button href="/demander-un-diagnostic">Demander un diagnostic</Button>
+            <Button href="/demander-un-diagnostic">Réserver mon Audit Flash</Button>
             <Button href="/methodologie" variant="secondary">
               Découvrir la méthode
             </Button>
