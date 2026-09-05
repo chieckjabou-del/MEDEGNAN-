@@ -32,7 +32,7 @@ export default function InstitutionsPage() {
               <h2 className="font-display text-2xl">{seg.name}</h2>
               <p className="mt-3 text-ink-soft">{seg.summary}</p>
               <span className="mt-6 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
-                Découvrir →
+                Découvrir
               </span>
             </Link>
           ))}

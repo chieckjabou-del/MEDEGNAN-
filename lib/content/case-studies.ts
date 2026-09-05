@@ -22,7 +22,7 @@ export const caseStudies: CaseStudyRecord[] = [
     scale: "CA de l'ordre de 350 à 400 M FCFA",
     status: "Mission en cours",
     headline: "Une entreprise convaincue d'être rentable, jusqu'à ce que le diagnostic parle",
-    metric: { label: "Marge nette visée", value: "1,8 % → 5–7 %" },
+    metric: { label: "Marge nette visée", value: "1,8 % devient 5–7 %" },
     problem:
       "Le dirigeant pilotait son entreprise à l'instinct depuis huit ans, convaincu d'opérer à marge confortable. Aucune comptabilité certifiée, aucune vision consolidée de la trésorerie.",
     diagnostic:

@@ -29,7 +29,7 @@ export default function OfferCard({ offer }: { offer: Offer }) {
         href={offer.cta.href}
         className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-ink underline decoration-accent decoration-2 underline-offset-4 hover:text-accent"
       >
-        {offer.cta.label} →
+        {offer.cta.label}
       </Link>
     </div>
   );

@@ -3,6 +3,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
 import Section, { Kicker } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { site } from "@/lib/content/site";
 
 export const metadata: Metadata = {
@@ -34,16 +35,19 @@ export default function ContactPage() {
                 <a href={`tel:${site.contact.phoneBenin.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent">
                   {site.contact.phoneBenin}
                 </a>{" "}
-                <span className="text-sm text-ink-faint">(Bénin)</span>
+                <span className="text-sm text-ink-faint">(Bénin, WhatsApp)</span>
               </li>
               <li>
-                <a href={`tel:${site.contact.phoneCoteDIvoire.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent">
-                  {site.contact.phoneCoteDIvoire}
+                <a href={`tel:${site.contact.phoneFrance.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent">
+                  {site.contact.phoneFrance}
                 </a>{" "}
-                <span className="text-sm text-ink-faint">(Côte d&apos;Ivoire)</span>
+                <span className="text-sm text-ink-faint">(France)</span>
               </li>
               <li className="text-ink-soft">{site.contact.city}</li>
             </ul>
+            <div className="mt-6">
+              <WhatsAppButton message="Bonjour, je souhaite échanger avec MEDEGNAN CONSULTING." />
+            </div>
           </div>
           <div>
             <Kicker>Selon votre profil</Kicker>

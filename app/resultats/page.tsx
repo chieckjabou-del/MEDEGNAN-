@@ -65,7 +65,7 @@ export default function ResultatsPage() {
           ))}
         </div>
         <Button href="/etudes-de-cas" variant="ghost" className="mt-8 px-0">
-          Lire les études de cas complètes →
+          Lire les études de cas complètes
         </Button>
       </Section>
     </>

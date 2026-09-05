@@ -8,8 +8,13 @@ export const site = {
   contact: {
     email: "contactmedegnan@gmail.com",
     phoneBenin: "+229 01 64 28 08 65",
-    phoneCoteDIvoire: "+225 01 61 42 18 81",
+    phoneFrance: "+33 7 66 58 29 22",
     city: "Cotonou, Bénin",
+  },
+  whatsapp: {
+    // Numéro Bénin confirmé actif sur WhatsApp Business par le cabinet.
+    digits: "2290164280865",
+    display: "+229 01 64 28 08 65",
   },
   legal: {
     entityNote:

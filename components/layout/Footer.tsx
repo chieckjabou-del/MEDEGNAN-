@@ -31,10 +31,10 @@ export default function Footer() {
                 {site.contact.email}
               </a>
               <a href={`tel:${site.contact.phoneBenin.replace(/\s/g, "")}`} className="hover:text-paper">
-                {site.contact.phoneBenin} (Bénin)
+                {site.contact.phoneBenin}
               </a>
-              <a href={`tel:${site.contact.phoneCoteDIvoire.replace(/\s/g, "")}`} className="hover:text-paper">
-                {site.contact.phoneCoteDIvoire} (Côte d&apos;Ivoire)
+              <a href={`tel:${site.contact.phoneFrance.replace(/\s/g, "")}`} className="hover:text-paper">
+                {site.contact.phoneFrance}
               </a>
               <p>{site.contact.city}</p>
             </div>

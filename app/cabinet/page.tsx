@@ -63,15 +63,15 @@ export default function CabinetPage() {
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           <div className="border border-line p-6">
-            <p className="font-mono text-xs uppercase tracking-wide text-accent">Direction de mission</p>
-            <h3 className="mt-2 font-display text-lg">Jabou CHIECK</h3>
+            <p className="font-mono text-xs uppercase tracking-wide text-accent">Gérance & direction de mission</p>
+            <h3 className="mt-2 font-display text-lg">Direction des opérations</h3>
             <p className="mt-2 text-sm text-ink-soft">
-              Responsable des opérations. Supervision des missions, structuration des partenariats, gouvernance.
+              Supervision des missions, structuration des partenariats, gouvernance du cabinet.
             </p>
           </div>
           <div className="border border-line p-6">
             <p className="font-mono text-xs uppercase tracking-wide text-accent">Associé exécutif</p>
-            <h3 className="mt-2 font-display text-lg">Fondateur</h3>
+            <h3 className="mt-2 font-display text-lg">Fondation & orientation stratégique</h3>
             <p className="mt-2 text-sm text-ink-soft">
               Orientation stratégique du cabinet et conception de la méthodologie MEDEGNAN CORE.
             </p>

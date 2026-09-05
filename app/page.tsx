@@ -67,7 +67,7 @@ export default function HomePage() {
               </p>
             </div>
             <span className="mt-8 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
-              Solutions entreprises →
+              Solutions entreprises
             </span>
           </Link>
           <Link href="/solutions/institutions" className="group flex flex-col justify-between bg-paper p-8 md:p-12">
@@ -80,7 +80,7 @@ export default function HomePage() {
               </p>
             </div>
             <span className="mt-8 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
-              Solutions institutions →
+              Solutions institutions
             </span>
           </Link>
         </div>
@@ -111,7 +111,7 @@ export default function HomePage() {
           <PhaseTimeline phases={corePhases} />
         </div>
         <Button href="/methodologie" variant="ghost" className="mt-8 px-0">
-          Voir la méthodologie complète →
+          Voir la méthodologie complète
         </Button>
       </Section>
 
@@ -139,7 +139,7 @@ export default function HomePage() {
             <h2 className="mt-3 font-display text-3xl md:text-4xl">Études de cas</h2>
           </div>
           <Link href="/etudes-de-cas" className="text-sm font-medium underline decoration-accent decoration-2 underline-offset-4">
-            Toutes les études de cas →
+            Toutes les études de cas
           </Link>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -178,7 +178,7 @@ export default function HomePage() {
           ))}
         </div>
         <Button href="/solutions" variant="ghost" className="mt-8 px-0">
-          Explorer toutes les solutions →
+          Explorer toutes les solutions
         </Button>
       </Section>
 
@@ -194,7 +194,7 @@ export default function HomePage() {
               <h3 className="font-display text-lg">{seg.name}</h3>
               <p className="mt-2 text-sm text-ink-soft">{seg.summary}</p>
               <span className="mt-4 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
-                En savoir plus →
+                En savoir plus
               </span>
             </Link>
           ))}
@@ -210,7 +210,7 @@ export default function HomePage() {
           construction, pas un flux de contenu générique.
         </p>
         <Button href="/ressources" variant="ghost" className="mt-6 px-0">
-          Explorer les ressources →
+          Explorer les ressources
         </Button>
       </Section>
 

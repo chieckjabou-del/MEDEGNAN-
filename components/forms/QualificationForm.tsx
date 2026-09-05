@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { site } from "@/lib/content/site";
+import { whatsappLink } from "@/lib/whatsapp";
 
 const orgTypes = ["Entreprise privée", "Institution publique", "Fonds / investisseur", "Banque / institution financière", "Autre"];
 const sizes = ["Moins de 10 employés", "10 à 50 employés", "50 à 200 employés", "Plus de 200 employés"];
@@ -13,10 +14,45 @@ const fieldClass =
   "w-full border border-ink/25 bg-paper px-4 py-3 text-ink placeholder:text-ink-faint focus-visible:outline-2 focus-visible:outline-accent";
 const labelClass = "block text-sm font-medium text-ink";
 
+type FormData = {
+  orgType: string;
+  secteur: string;
+  pays: string;
+  probleme: string;
+  nom: string;
+  email: string;
+  telephone: string;
+  taille: string;
+  urgence: string;
+  objectif: string;
+  accompagnement: string;
+  budget: string;
+};
+
+function buildSummary(data: FormData) {
+  return [
+    `Nouvelle demande de diagnostic — ${data.orgType}`,
+    ``,
+    `Type d'organisation : ${data.orgType}`,
+    `Secteur : ${data.secteur}`,
+    `Pays : ${data.pays}`,
+    `Taille : ${data.taille}`,
+    `Problème principal : ${data.probleme}`,
+    `Objectif : ${data.objectif}`,
+    `Type d'accompagnement recherché : ${data.accompagnement}`,
+    `Niveau d'urgence : ${data.urgence}`,
+    `Budget indicatif : ${data.budget}`,
+    ``,
+    `Nom : ${data.nom}`,
+    `Email : ${data.email}`,
+    `Téléphone : ${data.telephone}`,
+  ].join("\n");
+}
+
 export default function QualificationForm() {
   const [step, setStep] = useState<1 | 2>(1);
-  const [submitted, setSubmitted] = useState(false);
-  const [data, setData] = useState({
+  const [status, setStatus] = useState<"idle" | "sending" | "sent-email" | "sent-mailto">("idle");
+  const [data, setData] = useState<FormData>({
     orgType: orgTypes[0],
     secteur: "",
     pays: "",
@@ -31,7 +67,7 @@ export default function QualificationForm() {
     budget: budgets[0],
   });
 
-  function update<K extends keyof typeof data>(key: K, value: (typeof data)[K]) {
+  function update<K extends keyof FormData>(key: K, value: FormData[K]) {
     setData((d) => ({ ...d, [key]: value }));
   }
 
@@ -40,37 +76,53 @@ export default function QualificationForm() {
     setStep(2);
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const subject = `Demande de diagnostic — ${data.orgType} — ${data.secteur || "secteur non précisé"}`;
-    const body = [
-      `Type d'organisation : ${data.orgType}`,
-      `Secteur : ${data.secteur}`,
-      `Pays : ${data.pays}`,
-      `Taille : ${data.taille}`,
-      `Problème principal : ${data.probleme}`,
-      `Objectif : ${data.objectif}`,
-      `Type d'accompagnement recherché : ${data.accompagnement}`,
-      `Niveau d'urgence : ${data.urgence}`,
-      `Budget indicatif : ${data.budget}`,
-      ``,
-      `Nom : ${data.nom}`,
-      `Email : ${data.email}`,
-      `Téléphone : ${data.telephone}`,
-    ].join("\n");
+    setStatus("sending");
 
-    window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/diagnostic", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("backend unavailable");
+      setStatus("sent-email");
+      return;
+    } catch {
+      // Repli automatique : le backend n'est pas encore configuré (aucune clé API définie),
+      // ou une erreur réseau est survenue. On ouvre un e-mail pré-rempli à la place.
+    }
+
+    const subject = `Demande de diagnostic — ${data.orgType} — ${data.secteur || "secteur non précisé"}`;
+    window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildSummary(data))}`;
+    setStatus("sent-mailto");
   }
 
-  if (submitted) {
+  if (status === "sent-email") {
+    return (
+      <div className="border border-line bg-paper-raised p-8 md:p-10">
+        <h2 className="font-display text-2xl">Votre demande a été envoyée</h2>
+        <p className="mt-3 max-w-lg text-ink-soft">
+          Un consultant MEDEGNAN revient vers vous rapidement. Pour toute urgence, contactez-nous directement au{" "}
+          {site.contact.phoneBenin} ou sur WhatsApp.
+        </p>
+      </div>
+    );
+  }
+
+  if (status === "sent-mailto") {
     return (
       <div className="border border-line bg-paper-raised p-8 md:p-10">
         <h2 className="font-display text-2xl">Votre messagerie s&apos;est ouverte</h2>
         <p className="mt-3 max-w-lg text-ink-soft">
           Un e-mail pré-rempli avec vos réponses a été préparé à destination de <strong>{site.contact.email}</strong>.
           Envoyez-le pour finaliser votre demande. Si votre messagerie ne s&apos;est pas ouverte automatiquement,
-          écrivez-nous directement à cette adresse, ou appelez le {site.contact.phoneBenin}.
+          écrivez-nous directement à cette adresse, appelez le {site.contact.phoneBenin}, ou{" "}
+          <a href={whatsappLink(buildSummary(data))} target="_blank" rel="noopener noreferrer" className="underline decoration-accent decoration-2 underline-offset-4">
+            envoyez votre demande sur WhatsApp
+          </a>
+          .
         </p>
       </div>
     );
@@ -109,7 +161,7 @@ export default function QualificationForm() {
             <textarea id="probleme" className={fieldClass} rows={4} value={data.probleme} onChange={(e) => update("probleme", e.target.value)} placeholder="Décrivez en quelques lignes ce qui vous amène vers MEDEGNAN" required />
           </div>
           <button type="submit" className="mt-2 inline-flex w-fit items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-ink/85">
-            Continuer →
+            Continuer
           </button>
         </div>
       )}
@@ -178,11 +230,23 @@ export default function QualificationForm() {
 
           <div className="flex flex-wrap gap-4">
             <button type="button" onClick={() => setStep(1)} className="inline-flex items-center justify-center rounded-sm border border-ink/30 px-6 py-3 text-sm font-medium hover:bg-ink/5">
-              ← Retour
+              Retour
             </button>
-            <button type="submit" className="inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-ink/85">
-              Envoyer ma demande
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-ink/85 disabled:opacity-60"
+            >
+              {status === "sending" ? "Envoi en cours…" : "Envoyer ma demande"}
             </button>
+            <a
+              href={whatsappLink(buildSummary(data))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-sm border border-ink/30 px-6 py-3 text-sm font-medium hover:bg-ink/5"
+            >
+              Envoyer sur WhatsApp
+            </a>
           </div>
         </div>
       )}

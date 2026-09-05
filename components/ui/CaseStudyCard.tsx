@@ -18,7 +18,7 @@ export default function CaseStudyCard({ study }: { study: CaseStudyRecord }) {
       {study.metric && <p className="text-xs text-ink-faint">{study.metric.label}</p>}
       <p className="mt-4 text-sm leading-relaxed text-ink-soft">{study.problem}</p>
       <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-ink underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
-        Lire l&apos;étude de cas →
+        Lire l&apos;étude de cas
       </span>
     </Link>
   );

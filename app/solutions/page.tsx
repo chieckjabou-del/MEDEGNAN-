@@ -27,14 +27,14 @@ export default function SolutionsPage() {
             <h2 className="font-display text-2xl">Entreprises</h2>
             <p className="mt-3 text-ink-soft">PME, groupes, entrepreneurs — du diagnostic à la croissance structurée.</p>
             <span className="mt-6 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
-              Découvrir →
+              Découvrir
             </span>
           </Link>
           <Link href="/solutions/institutions" className="group border border-line bg-paper-raised p-8">
             <h2 className="font-display text-2xl">Institutions</h2>
             <p className="mt-3 text-ink-soft">États, ministères, fonds et banques — diagnostic, structuration, digitalisation.</p>
             <span className="mt-6 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent">
-              Découvrir →
+              Découvrir
             </span>
           </Link>
         </div>
