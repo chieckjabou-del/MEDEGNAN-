@@ -11,7 +11,6 @@ export type CaseStudyRecord = {
   decision: string;
   intervention: string;
   result: string;
-  resultCaveat?: string;
 };
 
 export const caseStudies: CaseStudyRecord[] = [
@@ -33,8 +32,6 @@ export const caseStudies: CaseStudyRecord[] = [
       "Recertification comptable, plafonnement des avances internes, inventaires physiques, discipline de recouvrement, monétisation de la politique de livraison, renégociation fournisseurs.",
     result:
       "Objectif de marge nette porté à 5–7 % (contre 1,8 % au diagnostic), pour un gain estimé de 13 à 21 M FCFA par an une fois le plan pleinement exécuté.",
-    resultCaveat:
-      "Mission en cours d'exécution. Ce résultat est un objectif chiffré du plan validé avec le client, pas encore un résultat clos et audité.",
   },
   {
     slug: "cosmetique-benin",
@@ -71,8 +68,7 @@ export const caseStudies: CaseStudyRecord[] = [
     intervention:
       "Reconstruction du diagnostic, mise sous contrôle croisé des flux de production, comité de pilotage hebdomadaire.",
     result:
-      "Mission en cours, classée en vigilance renforcée. Retenue ici comme illustration de la profondeur du diagnostic MEDEGNAN, pas comme succès clos.",
-    resultCaveat: "Mission active. Aucun résultat financier final à ce stade.",
+      "Mission en cours, classée en vigilance renforcée. Retenue ici comme illustration de la profondeur du diagnostic MEDEGNAN.",
   },
   {
     slug: "agro-distribution-cameroun",

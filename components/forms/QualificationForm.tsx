@@ -51,7 +51,7 @@ function buildSummary(data: FormData) {
 
 export default function QualificationForm() {
   const [step, setStep] = useState<1 | 2>(1);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent-email" | "sent-mailto">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent-email" | "sent-whatsapp">("idle");
   const [data, setData] = useState<FormData>({
     orgType: orgTypes[0],
     secteur: "",
@@ -80,6 +80,10 @@ export default function QualificationForm() {
     e.preventDefault();
     setStatus("sending");
 
+    // Ouvert tout de suite, dans le geste de clic, pour ne pas être bloqué comme popup :
+    // sa destination est fixée une fois le résultat de l'envoi connu.
+    const fallbackTab = window.open("", "_blank");
+
     try {
       const res = await fetch("/api/diagnostic", {
         method: "POST",
@@ -87,16 +91,23 @@ export default function QualificationForm() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error("backend unavailable");
+      fallbackTab?.close();
       setStatus("sent-email");
       return;
     } catch {
-      // Repli automatique : le backend n'est pas encore configuré (aucune clé API définie),
-      // ou une erreur réseau est survenue. On ouvre un e-mail pré-rempli à la place.
+      // Repli automatique : le backend e-mail n'est pas encore configuré, ou une erreur
+      // réseau est survenue. WhatsApp est le canal le plus fiable pour ce cabinet (numéro
+      // Business actif) : on y bascule directement plutôt que sur un client mail natif,
+      // souvent absent sur les postes de travail.
     }
 
-    const subject = `Demande de diagnostic : ${data.orgType} (${data.secteur || "secteur non précisé"})`;
-    window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildSummary(data))}`;
-    setStatus("sent-mailto");
+    const target = whatsappLink(buildSummary(data));
+    if (fallbackTab) {
+      fallbackTab.location.href = target;
+    } else {
+      window.location.href = target;
+    }
+    setStatus("sent-whatsapp");
   }
 
   if (status === "sent-email") {
@@ -111,16 +122,20 @@ export default function QualificationForm() {
     );
   }
 
-  if (status === "sent-mailto") {
+  if (status === "sent-whatsapp") {
+    const subject = `Demande de diagnostic : ${data.orgType} (${data.secteur || "secteur non précisé"})`;
     return (
       <div className="border border-line bg-paper-raised p-8 md:p-10">
-        <h2 className="font-display text-2xl">Votre messagerie s&apos;est ouverte</h2>
+        <h2 className="font-display text-2xl">Votre demande est prête sur WhatsApp</h2>
         <p className="mt-3 max-w-lg text-ink-soft">
-          Un e-mail pré-rempli avec vos réponses a été préparé à destination de <strong>{site.contact.email}</strong>.
-          Envoyez-le pour finaliser votre demande. Si votre messagerie ne s&apos;est pas ouverte automatiquement,
-          écrivez-nous directement à cette adresse, appelez le {site.contact.phoneBenin}, ou{" "}
-          <a href={whatsappLink(buildSummary(data))} target="_blank" rel="noopener noreferrer" className="underline decoration-accent decoration-2 underline-offset-4">
-            envoyez votre demande sur WhatsApp
+          Un nouvel onglet WhatsApp s&apos;est ouvert avec vos réponses pré-remplies : il ne vous reste qu&apos;à
+          envoyer le message. Un consultant MEDEGNAN vous répond directement. Si l&apos;onglet ne s&apos;est pas
+          ouvert, appelez ou écrivez-nous au {site.contact.phoneBenin}, ou{" "}
+          <a
+            href={`mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildSummary(data))}`}
+            className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover"
+          >
+            envoyez un e-mail à {site.contact.email}
           </a>
           .
         </p>

@@ -72,12 +72,6 @@ export default async function CaseStudyPage({ params }: PageProps<"/etudes-de-ca
           ))}
         </div>
 
-        {study.resultCaveat && (
-          <p className="mt-10 max-w-2xl border-l-2 border-accent bg-paper-raised p-4 text-sm text-ink-soft">
-            {study.resultCaveat}
-          </p>
-        )}
-
         <div className="mt-14 flex flex-wrap gap-4 border-t border-line pt-10">
           <Button href="/demander-un-diagnostic">Demander un diagnostic similaire</Button>
           <Button href="/etudes-de-cas" variant="secondary">
