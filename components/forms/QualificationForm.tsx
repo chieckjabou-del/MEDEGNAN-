@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useRef, FormEvent } from "react";
 import { site } from "@/lib/content/site";
 import { whatsappLink } from "@/lib/whatsapp";
 
@@ -49,9 +49,13 @@ function buildSummary(data: FormData) {
   ].join("\n");
 }
 
+type FieldErrors = Partial<Record<"probleme" | "nom" | "email", string>>;
+
 export default function QualificationForm() {
   const [step, setStep] = useState<1 | 2>(1);
   const [status, setStatus] = useState<"idle" | "sending" | "sent-email" | "sent-whatsapp">("idle");
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
   const [data, setData] = useState<FormData>({
     orgType: orgTypes[0],
     secteur: "",
@@ -69,15 +73,52 @@ export default function QualificationForm() {
 
   function update<K extends keyof FormData>(key: K, value: FormData[K]) {
     setData((d) => ({ ...d, [key]: value }));
+    if (key in errors) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[key as keyof FieldErrors];
+        return next;
+      });
+    }
+  }
+
+  function validateStep1(): FieldErrors {
+    const e: FieldErrors = {};
+    if (!data.probleme.trim()) e.probleme = "Décrivez en quelques mots le problème principal.";
+    return e;
+  }
+
+  function validateStep2(): FieldErrors {
+    const e: FieldErrors = {};
+    if (!data.nom.trim()) e.nom = "Indiquez votre nom.";
+    if (!data.email.trim()) e.email = "Indiquez une adresse e-mail.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = "Cette adresse e-mail n'est pas valide.";
+    return e;
+  }
+
+  function focusErrorSummary() {
+    requestAnimationFrame(() => errorSummaryRef.current?.focus());
   }
 
   function goToStep2(e: FormEvent) {
     e.preventDefault();
+    const found = validateStep1();
+    setErrors(found);
+    if (Object.keys(found).length > 0) {
+      focusErrorSummary();
+      return;
+    }
     setStep(2);
   }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    const found = validateStep2();
+    setErrors(found);
+    if (Object.keys(found).length > 0) {
+      focusErrorSummary();
+      return;
+    }
     setStatus("sending");
 
     // Ouvert tout de suite, dans le geste de clic, pour ne pas être bloqué comme popup :
@@ -144,12 +185,42 @@ export default function QualificationForm() {
   }
 
   return (
-    <form onSubmit={step === 1 ? goToStep2 : handleSubmit} className="border border-line bg-paper p-6 md:p-10">
+    <form noValidate onSubmit={step === 1 ? goToStep2 : handleSubmit} className="border border-line bg-paper p-6 md:p-10">
       <div className="mb-8 flex items-center gap-3 text-xs font-mono uppercase tracking-wide text-ink-faint">
         <span className={step === 1 ? "font-bold text-ink-soft" : ""}>01 · Votre situation</span>
         <span aria-hidden="true">·</span>
         <span className={step === 2 ? "font-bold text-ink-soft" : ""}>02 · Précisions & coordonnées</span>
       </div>
+
+      {Object.keys(errors).length > 0 && (
+        <div
+          ref={errorSummaryRef}
+          role="alert"
+          tabIndex={-1}
+          aria-labelledby="form-error-title"
+          className="mb-6 border-l-4 border-signal bg-signal-soft p-4 focus:outline-none"
+        >
+          <h3 id="form-error-title" className="text-sm font-bold text-ink">
+            Il y a un problème avec votre réponse
+          </h3>
+          <ul className="mt-2 flex flex-col gap-1 text-sm text-ink-soft">
+            {Object.entries(errors).map(([key, message]) => (
+              <li key={key}>
+                <a
+                  href={`#${key}`}
+                  className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover"
+                  onClick={(ev) => {
+                    ev.preventDefault();
+                    document.getElementById(key)?.focus();
+                  }}
+                >
+                  {message}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {step === 1 && (
         <div className="flex flex-col gap-6">
@@ -173,7 +244,22 @@ export default function QualificationForm() {
           </div>
           <div>
             <label className={labelClass} htmlFor="probleme">Quel est le problème principal ?</label>
-            <textarea id="probleme" className={fieldClass} rows={4} value={data.probleme} onChange={(e) => update("probleme", e.target.value)} placeholder="Décrivez en quelques lignes ce qui vous amène vers MEDEGNAN" required />
+            <textarea
+              id="probleme"
+              className={`${fieldClass} ${errors.probleme ? "border-signal" : ""}`}
+              rows={4}
+              value={data.probleme}
+              onChange={(e) => update("probleme", e.target.value)}
+              placeholder="Décrivez en quelques lignes ce qui vous amène vers MEDEGNAN"
+              aria-required="true"
+              aria-invalid={Boolean(errors.probleme)}
+              aria-describedby={errors.probleme ? "probleme-error" : undefined}
+            />
+            {errors.probleme && (
+              <p id="probleme-error" className="mt-1 text-sm text-signal">
+                {errors.probleme}
+              </p>
+            )}
           </div>
           <button type="submit" className="mt-2 inline-flex w-fit items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-ink/85">
             Continuer
@@ -231,11 +317,38 @@ export default function QualificationForm() {
           <div className="grid gap-6 sm:grid-cols-3">
             <div>
               <label className={labelClass} htmlFor="nom">Nom</label>
-              <input id="nom" className={fieldClass} value={data.nom} onChange={(e) => update("nom", e.target.value)} required />
+              <input
+                id="nom"
+                className={`${fieldClass} ${errors.nom ? "border-signal" : ""}`}
+                value={data.nom}
+                onChange={(e) => update("nom", e.target.value)}
+                aria-required="true"
+                aria-invalid={Boolean(errors.nom)}
+                aria-describedby={errors.nom ? "nom-error" : undefined}
+              />
+              {errors.nom && (
+                <p id="nom-error" className="mt-1 text-sm text-signal">
+                  {errors.nom}
+                </p>
+              )}
             </div>
             <div>
               <label className={labelClass} htmlFor="email">Email</label>
-              <input id="email" type="email" className={fieldClass} value={data.email} onChange={(e) => update("email", e.target.value)} required />
+              <input
+                id="email"
+                type="email"
+                className={`${fieldClass} ${errors.email ? "border-signal" : ""}`}
+                value={data.email}
+                onChange={(e) => update("email", e.target.value)}
+                aria-required="true"
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? "email-error" : undefined}
+              />
+              {errors.email && (
+                <p id="email-error" className="mt-1 text-sm text-signal">
+                  {errors.email}
+                </p>
+              )}
             </div>
             <div>
               <label className={labelClass} htmlFor="telephone">Téléphone</label>
@@ -244,7 +357,14 @@ export default function QualificationForm() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <button type="button" onClick={() => setStep(1)} className="inline-flex items-center justify-center rounded-sm border border-ink/30 px-6 py-3 text-sm font-medium hover:bg-ink/5">
+            <button
+              type="button"
+              onClick={() => {
+                setErrors({});
+                setStep(1);
+              }}
+              className="inline-flex items-center justify-center rounded-sm border border-ink/30 px-6 py-3 text-sm font-medium hover:bg-ink/5"
+            >
               Retour
             </button>
             <button
