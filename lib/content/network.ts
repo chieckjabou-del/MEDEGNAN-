@@ -1,45 +1,29 @@
 /**
  * Programme partenaire : devenir consultant sous licence MEDEGNAN.
  *
- * Source de la grille : MC-ANNEXES-CONTRAT-LICENCE-S3-V1, annexe 2, telle que
- * reprise dans le référentiel du portail consultant (table `licence_grille`,
- * migration 24_j3a). Parité fixe déclarée : 655,957 FCFA pour un euro.
- * Aucun montant n'est extrapolé.
+ * DÉCISION DU FONDATEUR (septembre 2026) : aucun prix n'est affiché sur le
+ * site. Les conditions financières se traitent en entretien de qualification,
+ * une fois le périmètre de fonctions arrêté avec le candidat. Aucun montant
+ * n'est donc stocké dans ce fichier : ni affiché, ni commenté, ni gardé « au
+ * cas où ». Le périmètre des formules, lui, est public.
  *
- * GRILLE NON PUBLIÉE POUR L'INSTANT. La note interne du cabinet dit : « la
- * souche tarifaire n'est pas tranchée, ne coder aucune grille avant arbitrage
- * du fondateur ». Les montants sont donc préparés et vérifiés, mais le bloc
- * tarifaire de la page reste masqué tant que ce drapeau vaut `false`.
- * Point en attente d'arbitrage : le droit d'entrée est identique pour une
- * fonction et pour trois, ce qui rend la formule à une fonction sans intérêt
- * pour un candidat.
+ * Source du périmètre : MC-ANNEXES-CONTRAT-LICENCE-S3-V1, annexe 2.
  */
-export const publierLaGrille: boolean = false;
-
 export const licenceFormulas = [
   {
     name: "Spécialiste",
     scope: "1 fonction",
-    entryFcfa: "350 000 FCFA",
-    entryEur: "550 €",
-    feeFcfa: "50 000 FCFA",
-    feeEur: "80 €",
+    detail: "Vous intervenez sur un domaine unique, celui que vous maîtrisez déjà en mission.",
   },
   {
     name: "Spécialiste",
     scope: "2 à 3 fonctions",
-    entryFcfa: "350 000 FCFA",
-    entryEur: "550 €",
-    feeFcfa: "90 000 FCFA",
-    feeEur: "140 €",
+    detail: "Vous couvrez un bloc cohérent, par exemple la finance avec les systèmes d'information.",
   },
   {
     name: "Expert Global",
     scope: "Les 12 fonctions",
-    entryFcfa: "750 000 FCFA",
-    entryEur: "1 150 €",
-    feeFcfa: "150 000 FCFA",
-    feeEur: "230 €",
+    detail: "Vous conduisez un diagnostic complet et pilotez une transformation de bout en bout.",
   },
 ];
 

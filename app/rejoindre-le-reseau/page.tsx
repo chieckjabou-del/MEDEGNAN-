@@ -6,7 +6,7 @@ import SectionBanner from "@/components/ui/SectionBanner";
 import { Button } from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import Icon from "@/components/ui/Icon";
-import { licenceFormulas, networkAxes, licenceStates, publierLaGrille } from "@/lib/content/network";
+import { licenceFormulas, networkAxes, licenceStates } from "@/lib/content/network";
 import { coreFunctions } from "@/lib/content/methodology";
 import { countriesServed } from "@/lib/content/proofs";
 
@@ -65,61 +65,32 @@ export default function RejoindreLeReseauPage() {
         />
         <div className="py-10 pb-20 md:pb-28">
           <p className="max-w-2xl leading-relaxed text-ink-soft">
-            La licence porte sur un périmètre de fonctions, choisi parmi les douze de la méthode CORE. Le droit
-            d&apos;entrée est versé une fois ; la redevance est mensuelle.
+            La licence porte sur un périmètre de fonctions, choisi parmi les douze de la méthode CORE. Vous n&apos;êtes
+            pas obligé de les couvrir toutes : vous vous engagez sur celles que vous conduisez réellement.
           </p>
 
-          {!publierLaGrille && (
-            <div className="mt-8 max-w-2xl border-l-2 border-offre bg-paper p-6">
-              <p className="leading-relaxed text-ink">
-                Les conditions financières de chaque formule sont communiquées lors de l&apos;entretien de
-                qualification, une fois le périmètre de fonctions arrêté avec le candidat.
-              </p>
-              <Button href="/contact" variant="secondary" className="mt-5">
-                Demander les conditions
-              </Button>
-            </div>
-          )}
+          <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+            {licenceFormulas.map((f, i) => (
+              <Reveal key={f.scope} delay={i * 90} className="flex flex-col bg-paper p-6">
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-offre">{f.scope}</p>
+                <h3 className="mt-3 text-xl font-bold">{f.name}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{f.detail}</p>
+              </Reveal>
+            ))}
+          </div>
 
-          {publierLaGrille && (
-            <>
-              <div className="mt-8 overflow-x-auto">
-                <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-                  <thead>
-                    <tr className="bg-offre text-xs uppercase tracking-wide text-paper">
-                      <th className="px-4 py-3 font-bold">Formule</th>
-                      <th className="px-4 py-3 font-bold">Périmètre</th>
-                      <th className="px-4 py-3 font-bold">Droit d&apos;entrée</th>
-                      <th className="px-4 py-3 font-bold">Redevance mensuelle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {licenceFormulas.map((f, i) => (
-                      <tr key={`${f.name}-${f.scope}`} className={i % 2 === 1 ? "bg-paper-deep" : "bg-paper"}>
-                        <td className="px-4 py-4 font-bold text-ink">{f.name}</td>
-                        <td className="px-4 py-4 text-ink-soft">{f.scope}</td>
-                        <td className="px-4 py-4">
-                          <span className="font-mono font-bold text-ink">{f.entryFcfa}</span>
-                          <span className="block text-xs text-ink-faint">{f.entryEur}</span>
-                        </td>
-                        <td className="px-4 py-4">
-                          <span className="font-mono font-bold text-ink">{f.feeFcfa}</span>
-                          <span className="block text-xs text-ink-faint">{f.feeEur}</span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="mt-4 max-w-2xl text-sm text-ink-faint">
-                Montants convertis à parité fixe de 655,957 FCFA pour un euro.
-              </p>
-            </>
-          )}
+          <div className="mt-8 max-w-2xl border-l-2 border-offre p-6 pl-6">
+            <p className="leading-relaxed text-ink">
+              Les conditions financières se traitent en entretien, une fois le périmètre arrêté avec vous. Nous ne les
+              affichons pas ici : une licence ne s&apos;achète pas sur une page, elle se décide après un échange.
+            </p>
+            <Button href="/contact" variant="secondary" className="mt-5">
+              Demander les conditions
+            </Button>
+          </div>
 
-          <p className="mt-6 max-w-2xl text-sm text-ink-faint">
-            Le contrat de licence prévoit également un état dormant, à redevance réduite, pour un consultant qui
-            suspend temporairement son activité.
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-faint">
+            Le contrat prévoit également un état dormant, pour un consultant qui suspend temporairement son activité.
           </p>
         </div>
       </Section>

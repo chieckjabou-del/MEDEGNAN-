@@ -196,6 +196,32 @@ a {
   }
 }
 
+/* Accordéon des quatre phases.
+   La largeur des colonnes est posée en style inline par le composant, donc
+   seule une règle !important peut la neutraliser là où l'accordéon horizontal
+   n'a pas de sens : en dessous de 768 px, et sans JavaScript. */
+@media (max-width: 767px) {
+  .mc-phases {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+html:not(.js) .mc-phases {
+  grid-template-columns: 1fr !important;
+}
+
+html:not(.js) .mc-phase-panneau {
+  grid-template-rows: 1fr !important;
+}
+
+html:not(.js) .mc-phase-rail {
+  display: none !important;
+}
+
+html:not(.js) .mc-phase-entete {
+  display: block !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] {
     opacity: 1;
