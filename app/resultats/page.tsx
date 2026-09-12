@@ -26,7 +26,7 @@ export default function ResultatsPage() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {proofStats.map((s) => (
             <div key={s.label} className="border-t-2 border-ink pt-4">
-              <p className="text-4xl font-bold tabular md:text-5xl">{s.value}</p>
+              <p className="text-4xl font-bold md:text-5xl">{s.value}</p>
               <p className="mt-1 text-sm font-medium">{s.label}</p>
               <p className="mt-1 text-xs text-ink-faint">{s.detail}</p>
             </div>
@@ -57,7 +57,7 @@ export default function ResultatsPage() {
                   </p>
                   <h3 className="mt-1 text-xl font-bold">{s.headline}</h3>
                 </div>
-                {s.metric && <p className="text-2xl font-bold tabular text-accent-hover md:text-right">{s.metric.value}</p>}
+                {s.metric && <p className="text-2xl font-bold text-accent-hover md:text-right">{s.metric.value}</p>}
               </div>
             ))}
           </div>

@@ -25,7 +25,7 @@ export default function OfferDetail({ offer }: { offer: Offer }) {
         </div>
       </div>
       {offer.priceRange && (
-        <p className="mt-6 border-t border-line pt-6 font-mono text-lg tabular">
+        <p className="mt-6 border-t border-line pt-6 font-mono text-lg">
           {offer.priceRange}
           {offer.priceNote && <span className="mt-1 block text-sm font-sans text-ink-faint">{offer.priceNote}</span>}
         </p>

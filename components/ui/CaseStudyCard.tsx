@@ -13,7 +13,7 @@ export default function CaseStudyCard({ study }: { study: CaseStudyRecord }) {
       </div>
       <h3 className="mt-4 font-display text-xl md:text-2xl text-balance">{study.headline}</h3>
       {study.metric && (
-        <p className="mt-3 font-mono text-2xl tabular text-accent-hover">{study.metric.value}</p>
+        <p className="mt-3 font-mono text-2xl text-accent-hover">{study.metric.value}</p>
       )}
       {study.metric && <p className="text-xs text-ink-faint">{study.metric.label}</p>}
       <p className="mt-4 text-sm leading-relaxed text-ink-soft">{study.problem}</p>

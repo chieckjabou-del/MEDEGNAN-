@@ -4,6 +4,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Section, { Kicker } from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import MetricRange from "@/components/ui/MetricRange";
 import { caseStudies } from "@/lib/content/case-studies";
 
 export function generateStaticParams() {
@@ -50,10 +51,16 @@ export default async function CaseStudyPage({ params }: PageProps<"/etudes-de-ca
             {study.headline}
           </h1>
           <p className="mt-4 max-w-2xl text-ink-soft">{study.scale}</p>
-          {study.metric && (
-            <p className="mt-6 font-mono text-3xl tabular text-accent-hover">{study.metric.value}</p>
+          {study.metricRange ? (
+            <MetricRange label={study.metric?.label ?? ""} {...study.metricRange} />
+          ) : (
+            <>
+              {study.metric && (
+                <p className="mt-6 font-mono text-3xl text-accent-hover">{study.metric.value}</p>
+              )}
+              {study.metric && <p className="text-sm text-ink-faint">{study.metric.label}</p>}
+            </>
           )}
-          {study.metric && <p className="text-sm text-ink-faint">{study.metric.label}</p>}
         </Container>
       </div>
 

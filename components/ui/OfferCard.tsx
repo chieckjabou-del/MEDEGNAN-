@@ -17,7 +17,7 @@ export default function OfferCard({ offer }: { offer: Offer }) {
         ))}
       </ul>
       {offer.priceRange && (
-        <p className="mt-4 font-mono text-sm tabular text-ink">
+        <p className="mt-4 font-mono text-sm text-ink">
           {offer.priceRange}
           {offer.priceNote && <span className="block text-xs font-sans text-ink-faint">{offer.priceNote}</span>}
         </p>

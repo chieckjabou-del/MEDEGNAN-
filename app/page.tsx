@@ -124,7 +124,7 @@ export default function HomePage() {
         <div className="grid grid-cols-2 gap-8 py-10 pb-20 md:grid-cols-4 md:pb-28">
           {proofStats.map((s) => (
             <div key={s.label} className="border-t-2 border-resultat pt-4">
-              <p className="text-4xl font-bold tabular text-ink md:text-5xl">{s.value}</p>
+              <p className="text-4xl font-bold text-ink md:text-5xl">{s.value}</p>
               <p className="mt-1 text-sm font-medium text-ink">{s.label}</p>
               <p className="mt-1 text-xs text-ink-faint">{s.detail}</p>
             </div>

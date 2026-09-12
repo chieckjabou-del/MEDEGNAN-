@@ -6,6 +6,15 @@ export type CaseStudyRecord = {
   status: "Mission conclue" | "Mission en cours";
   headline: string;
   metric?: { label: string; value: string };
+  metricRange?: {
+    axisMax: number;
+    axisUnit: string;
+    before: number;
+    beforeLabel: string;
+    targetMin: number;
+    targetMax: number;
+    targetLabel: string;
+  };
   problem: string;
   diagnostic: string;
   decision: string;
@@ -22,6 +31,15 @@ export const caseStudies: CaseStudyRecord[] = [
     status: "Mission en cours",
     headline: "Une entreprise convaincue d'être rentable, jusqu'à ce que le diagnostic parle",
     metric: { label: "Marge nette visée", value: "1,8 % devient 5–7 %" },
+    metricRange: {
+      axisMax: 10,
+      axisUnit: "%",
+      before: 1.8,
+      beforeLabel: "1,8 %",
+      targetMin: 5,
+      targetMax: 7,
+      targetLabel: "5–7 %",
+    },
     problem:
       "Le dirigeant pilotait son entreprise à l'instinct depuis huit ans, convaincu d'opérer à marge confortable. Aucune comptabilité certifiée, aucune vision consolidée de la trésorerie.",
     diagnostic:
