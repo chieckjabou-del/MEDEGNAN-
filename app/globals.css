@@ -139,6 +139,43 @@ a {
   }
 }
 
+/* ---- Mouvement ----------------------------------------------------------
+   Règle de conduite : mouvement lent, une seule fois, jamais de clignotement.
+   Tout est conditionné à la classe "js" posée sur <html> : sans JavaScript,
+   la page s'affiche entière et immobile, rien n'est jamais masqué.
+   -------------------------------------------------------------------------- */
+
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+@keyframes mc-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .text-balance {
   text-wrap: balance;
 }

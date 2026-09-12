@@ -7,9 +7,12 @@ import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import PhaseTimeline from "@/components/ui/PhaseTimeline";
 import Testimonials from "@/components/ui/Testimonials";
 import Icon from "@/components/ui/Icon";
+import Reveal from "@/components/ui/Reveal";
+import CountUp from "@/components/ui/CountUp";
+import Marquee from "@/components/ui/Marquee";
 import { offerCategoryIcons, institutionIcons, problemIcons } from "@/lib/content/icon-map";
 import { site } from "@/lib/content/site";
-import { proofStats } from "@/lib/content/proofs";
+import { proofStats, countriesServed } from "@/lib/content/proofs";
 import { caseStudies } from "@/lib/content/case-studies";
 import { testimonials } from "@/lib/content/testimonials";
 import { corePhases, methodologyIntro } from "@/lib/content/methodology";
@@ -128,8 +131,9 @@ export default function HomePage() {
         />
         <div className="max-w-3xl py-10 pb-20 md:pb-28">
           {problems.map((p, i) => (
-            <div
+            <Reveal
               key={p.title}
+              delay={i * 90}
               className="grid grid-cols-[2.5rem_1fr] gap-4 border-t border-line py-6 first:border-t-2 first:border-signal md:grid-cols-[4rem_1fr] md:gap-8"
             >
               <span className="flex items-start gap-3 font-mono text-2xl font-bold text-signal md:text-3xl">
@@ -142,7 +146,7 @@ export default function HomePage() {
                 </div>
                 <p className="mt-2 leading-relaxed text-ink-soft">{p.body}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -178,15 +182,20 @@ export default function HomePage() {
             Onze pays. Plus de cent missions. Un seul système.
           </h2>
           <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-8">
-            {proofStats.map((s) => (
-              <div key={s.label} className="border-l-2 border-accent pl-4 md:pl-6">
-                <p className="font-mono text-4xl font-bold text-accent md:text-5xl">{s.value}</p>
+            {proofStats.map((s, i) => (
+              <Reveal key={s.label} delay={i * 110} className="border-l-2 border-accent pl-4 md:pl-6">
+                <p className="font-mono text-4xl font-bold text-accent md:text-5xl">
+                  <CountUp value={s.value} />
+                </p>
                 <p className="mt-2 text-sm font-medium text-paper">{s.label}</p>
                 <p className="mt-1 text-xs leading-relaxed text-paper/70">{s.detail}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
+        <div className="mt-14 border-y border-paper/15 py-4 text-paper/75">
+          <Marquee items={countriesServed} />
+        </div>
       </section>
 
       {/* Études de cas : un cas mis en avant, un second en appui */}
@@ -208,12 +217,12 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="mt-8 grid gap-6 lg:grid-cols-5">
-            <div className="lg:col-span-3">
+            <Reveal className="lg:col-span-3">
               <CaseStudyCard study={caseStudies[0]} />
-            </div>
-            <div className="lg:col-span-2">
+            </Reveal>
+            <Reveal delay={130} className="lg:col-span-2">
               <CaseStudyCard study={caseStudies[1]} />
-            </div>
+            </Reveal>
           </div>
         </div>
       </Section>
@@ -227,7 +236,8 @@ export default function HomePage() {
           className="-mx-6 md:-mx-10"
         />
         <div className="py-10 pb-20 md:pb-28">
-          <figure className="relative mx-auto max-w-3xl border-y border-line py-10 text-center md:py-14">
+          <Reveal as="div" className="mx-auto max-w-3xl">
+          <figure className="relative border-y border-line py-10 text-center md:py-14">
             <span
               aria-hidden="true"
               className="pointer-events-none absolute left-0 top-2 select-none font-display text-7xl leading-none text-accent/25 md:text-8xl"
@@ -247,6 +257,7 @@ export default function HomePage() {
               </span>
             </figcaption>
           </figure>
+          </Reveal>
           <div className="mt-10">
             <Testimonials items={otherTestimonials} />
           </div>

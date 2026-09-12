@@ -67,6 +67,14 @@ const jsonLd = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" data-scroll-behavior="smooth" className="h-full antialiased">
+      <head>
+        {/* Posé avant le premier rendu : les apparitions au défilement ne
+            s'activent que si le JavaScript tourne, sans quoi la page reste
+            entièrement visible et immobile. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add("js")` }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <script
           type="application/ld+json"
