@@ -178,7 +178,7 @@ export default function HomePage() {
             Pas un discours, des chiffres
           </p>
           <h2 className="mt-2 max-w-2xl text-2xl font-bold text-paper text-balance md:text-4xl">
-            Onze pays. Plus de cent missions. Un seul système.
+            Onze pays. Cinquante consultants. Un seul système.
           </h2>
           <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-8">
             {proofStats.map((s, i) => (
