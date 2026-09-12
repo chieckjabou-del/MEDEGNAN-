@@ -5,9 +5,11 @@ import SectionBanner from "@/components/ui/SectionBanner";
 import { Button } from "@/components/ui/Button";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import PhaseTimeline from "@/components/ui/PhaseTimeline";
+import Testimonials from "@/components/ui/Testimonials";
 import { site } from "@/lib/content/site";
 import { proofStats } from "@/lib/content/proofs";
 import { caseStudies } from "@/lib/content/case-studies";
+import { testimonials } from "@/lib/content/testimonials";
 import { corePhases, methodologyIntro } from "@/lib/content/methodology";
 import { offerCategories } from "@/lib/content/offers";
 import { institutionSegments } from "@/lib/content/institutions";
@@ -147,6 +149,14 @@ export default function HomePage() {
               <CaseStudyCard key={s.slug} study={s} />
             ))}
           </div>
+        </div>
+      </Section>
+
+      {/* Témoignages */}
+      <Section tone="raised" className="!py-0">
+        <SectionBanner label="Ce qu'en disent nos clients" title="Des dirigeants qui ont collaboré avec MEDEGNAN" tone="vert" className="-mx-6 md:-mx-10" />
+        <div className="py-10 pb-20 md:pb-28">
+          <Testimonials items={testimonials} />
         </div>
       </Section>
 
