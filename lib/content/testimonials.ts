@@ -25,7 +25,7 @@ export const testimonials: Testimonial[] = [
       "Nous avons particulièrement apprécié la rigueur méthodologique, la pertinence des analyses et la capacité d'adaptation du cabinet MEDEGNAN CONSULTING.",
     name: "Edaye Beaudouin Jean-de-Dieu",
     role: "Directeur",
-    organization: "CaRESaP — Cabinet de Recherche en Épidémiologie et en Santé des Populations",
+    organization: "CaRESaP, Cabinet de Recherche en Épidémiologie et en Santé des Populations",
     sector: "Recherche en santé publique",
     location: "Parakou, Bénin",
   },

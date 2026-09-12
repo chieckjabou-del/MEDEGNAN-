@@ -33,6 +33,11 @@ const problems = [
   },
 ];
 
+// Témoignage mis en avant : celui du client institutionnel, dont l'attestation est
+// vérifiable en ligne. Les deux autres suivent en rang compact.
+const featuredTestimonial = testimonials[1];
+const otherTestimonials = testimonials.filter((t) => t !== featuredTestimonial);
+
 export default function HomePage() {
   return (
     <>
@@ -41,11 +46,12 @@ export default function HomePage() {
           <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-accent">{site.name}</p>
           <div className="mt-4 h-px w-16 bg-accent" aria-hidden="true" />
           <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.1] text-paper text-balance md:text-7xl">
-            Comprendre ce qui bloque une organisation. Construire sa trajectoire.
+            La plupart des organisations savent qu&apos;elles bloquent. Peu savent où.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-paper/85 text-pretty md:text-xl">
-            {site.baseline}. MEDEGNAN CONSULTING diagnostique la situation réelle d&apos;une entreprise ou d&apos;une
-            institution, identifie ce qui freine sa performance, et accompagne l&apos;exécution jusqu&apos;au résultat mesuré.
+            {site.baseline}. MEDEGNAN CONSULTING établit d&apos;abord la situation réelle d&apos;une entreprise ou
+            d&apos;une institution, isole ce qui freine sa performance, puis accompagne l&apos;exécution jusqu&apos;au
+            résultat mesuré, pas jusqu&apos;à la remise du rapport.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Button href="/demander-un-diagnostic" variant="accent">
@@ -58,150 +64,264 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Deux portes d'entrée */}
+      {/* Deux portes d'entrée : diptyque sombre / clair, pas deux cartes identiques */}
       <Section tone="paper" className="!py-0">
-        <SectionBanner label="Deux publics, deux logiques" title="Vous dirigez une entreprise, ou une institution ?" tone="navy" className="-mx-6 md:-mx-10" />
-        <div className="pb-20 pt-10 md:pb-28">
-        <div className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-          <Link href="/solutions/entreprises" className="group flex flex-col justify-between bg-paper p-8 md:p-12">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Entreprises</span>
-              <h3 className="mt-3 text-2xl font-bold md:text-3xl">PME, groupes, entrepreneurs</h3>
-              <p className="mt-4 max-w-md text-ink-soft">
-                Diagnostiquer, structurer, accélérer ou piloter une entreprise, du dirigeant qui sort du chaos initial
-                au groupe qui prépare sa prochaine phase de croissance.
+        <SectionBanner
+          label="Le point de départ change"
+          title="Une entreprise et un ministère ne se diagnostiquent pas de la même façon"
+          tone="navy"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="-mx-6 grid md:-mx-10 md:grid-cols-2">
+          <Link
+            href="/solutions/entreprises"
+            className="group relative flex flex-col justify-between overflow-hidden bg-deep px-6 py-14 text-paper md:px-12 md:py-20"
+          >
+            <span className="pointer-events-none absolute right-6 top-6 select-none font-mono text-sm font-bold tracking-widest text-accent md:right-10">
+              01
+            </span>
+            <div className="relative">
+              <span className="text-xs font-bold uppercase tracking-wide text-accent">Entreprises</span>
+              <h3 className="mt-3 max-w-sm text-2xl font-bold text-paper md:text-3xl">
+                PME, groupes, entrepreneurs
+              </h3>
+              <p className="mt-4 max-w-md text-paper/80">
+                Du dirigeant qui sort du chaos initial au groupe qui prépare sa prochaine croissance : diagnostiquer,
+                structurer, accélérer, piloter.
               </p>
             </div>
-            <span className="mt-8 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
+            <span className="relative mt-10 inline-flex items-center gap-1 text-sm font-medium text-paper underline decoration-accent decoration-2 underline-offset-4">
               Cliquez ici : solutions entreprises →
             </span>
           </Link>
-          <Link href="/solutions/institutions" className="group flex flex-col justify-between bg-paper p-8 md:p-12">
-            <div>
+          <Link
+            href="/solutions/institutions"
+            className="group relative flex flex-col justify-between overflow-hidden bg-paper-raised px-6 py-14 md:px-12 md:py-20"
+          >
+            <span className="pointer-events-none absolute right-6 top-6 select-none font-mono text-sm font-bold tracking-widest text-ink-soft md:right-10">
+              02
+            </span>
+            <div className="relative">
               <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Institutions</span>
-              <h3 className="mt-3 text-2xl font-bold md:text-3xl">États, ministères, fonds, banques</h3>
+              <h3 className="mt-3 max-w-sm text-2xl font-bold md:text-3xl">États, ministères, fonds, banques</h3>
               <p className="mt-4 max-w-md text-ink-soft">
-                Diagnostic de filière, structuration de programmes, digitalisation de la performance publique et
+                Diagnostic de filière, structuration de programmes, digitalisation de la performance publique,
                 accompagnement des décisions d&apos;investissement.
               </p>
             </div>
-            <span className="mt-8 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
+            <span className="relative mt-10 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
               Cliquez ici : solutions institutions →
             </span>
           </Link>
         </div>
-        </div>
       </Section>
 
-      {/* Problèmes traités */}
+      {/* Problèmes traités : liste de dossier numérotée, pas une grille de cartes */}
       <Section tone="raised" className="!py-0">
-        <SectionBanner label="Ce que nous traitons" title="Les mêmes signaux reviennent, quel que soit le secteur" tone="rouge" className="-mx-6 md:-mx-10" />
-        <div className="grid gap-6 py-10 pb-20 md:grid-cols-2 md:pb-28 lg:grid-cols-4">
-          {problems.map((p) => (
-            <div key={p.title} className="border-t-2 border-signal pt-4">
-              <h3 className="text-lg font-bold">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{p.body}</p>
+        <SectionBanner
+          label="Huit secteurs, les mêmes signaux"
+          title="Les mêmes signaux reviennent, quel que soit le secteur"
+          tone="rouge"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="max-w-3xl py-10 pb-20 md:pb-28">
+          {problems.map((p, i) => (
+            <div
+              key={p.title}
+              className="grid grid-cols-[2.5rem_1fr] gap-4 border-t border-line py-6 first:border-t-2 first:border-signal md:grid-cols-[4rem_1fr] md:gap-8"
+            >
+              <span className="font-mono text-2xl font-bold text-signal md:text-3xl" aria-hidden="true">
+                0{i + 1}
+              </span>
+              <div>
+                <h3 className="text-lg font-bold md:text-xl">{p.title}</h3>
+                <p className="mt-2 leading-relaxed text-ink-soft">{p.body}</p>
+              </div>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Méthode */}
+      {/* Méthode : chapeau asymétrique, puis la frise */}
       <Section tone="paper" className="!py-0">
-        <SectionBanner label={methodologyIntro.kicker} title={methodologyIntro.title} tone="teal" className="-mx-6 md:-mx-10" />
+        <SectionBanner
+          label="Pas d'improvisation"
+          title={methodologyIntro.title}
+          tone="teal"
+          className="-mx-6 md:-mx-10"
+        />
         <div className="pb-20 pt-10 md:pb-28">
-          <p className="max-w-2xl text-lg leading-relaxed text-ink-soft">{methodologyIntro.lead}</p>
-          <div className="mt-10">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
+            <p className="max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">{methodologyIntro.lead}</p>
+            <Button href="/methodologie" variant="ghost" className="px-0 lg:mb-1">
+              Voir la méthodologie complète
+            </Button>
+          </div>
+          <div className="mt-12">
             <PhaseTimeline phases={corePhases} />
           </div>
-          <Button href="/methodologie" variant="ghost" className="mt-8 px-0">
-            Voir la méthodologie complète
-          </Button>
         </div>
       </Section>
 
-      {/* Preuves / chiffres */}
-      <Section tone="raised" className="!py-0">
-        <SectionBanner label="Preuves" title="Une pratique réelle, mesurée" tone="vert" className="-mx-6 md:-mx-10" />
-        <div className="grid grid-cols-2 gap-8 py-10 pb-20 md:grid-cols-4 md:pb-28">
-          {proofStats.map((s) => (
-            <div key={s.label} className="border-t-2 border-resultat pt-4">
-              <p className="text-4xl font-bold text-ink md:text-5xl">{s.value}</p>
-              <p className="mt-1 text-sm font-medium text-ink">{s.label}</p>
-              <p className="mt-1 text-xs text-ink-faint">{s.detail}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Études de cas */}
-      <Section tone="paper" className="!py-0">
-        <SectionBanner label="Ce que nos missions produisent" title="Études de cas" tone="acier" className="-mx-6 md:-mx-10" />
-        <div className="py-10 pb-20 md:pb-28">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <p className="max-w-xl text-ink-soft">Problème, diagnostic, décision, intervention, résultat.</p>
-            <Link href="/etudes-de-cas" className="text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
-              Cliquez ici : toutes les études de cas →
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {caseStudies.slice(0, 2).map((s) => (
-              <CaseStudyCard key={s.slug} study={s} />
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Témoignages */}
-      <Section tone="raised" className="!py-0">
-        <SectionBanner label="Ce qu'en disent nos clients" title="Des dirigeants qui ont collaboré avec MEDEGNAN" tone="vert" className="-mx-6 md:-mx-10" />
-        <div className="py-10 pb-20 md:pb-28">
-          <Testimonials items={testimonials} />
-        </div>
-      </Section>
-
-      {/* Pilotage / Operating Partner */}
-      <Section tone="raised" className="!py-0">
-        <SectionBanner label="Au-delà de la mission" title="Un pilotage aux côtés du dirigeant, pas seulement un rapport" tone="violet" className="-mx-6 md:-mx-10" />
-        <div className="py-10 pb-20 md:pb-28">
-          <p className="max-w-2xl text-lg leading-relaxed text-ink-soft">
-            MEDEGNAN peut rester engagé après le diagnostic. Animation des revues de direction, suivi des indicateurs,
-            aide à la décision, coordination des chantiers en cours, ajustement de trajectoire : un accompagnement
-            dans la durée, pas une offre forfaitaire figée.
+      {/* Preuves : le bandeau devient la section entière, mur de chiffres sur fond sombre */}
+      <section className="bg-ink py-20 md:py-28">
+        <Container>
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-accent">
+            Pas un discours, des chiffres
           </p>
-          <Button href="/solutions/pilotage" className="mt-8">
-            Operating Partner
-          </Button>
-        </div>
-      </Section>
-
-      {/* Solutions */}
-      <Section tone="paper" className="!py-0">
-        <SectionBanner label="Nos offres" title="Organisées par problème, pas par jargon" tone="navy" className="-mx-6 md:-mx-10" />
-        <div className="py-10 pb-20 md:pb-28">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {offerCategories.map((c) => (
-              <div key={c.name} className="border border-line p-6">
-                <h3 className="text-xl font-bold">{c.name}</h3>
-                <p className="mt-2 text-sm text-ink-soft">{c.description}</p>
+          <h2 className="mt-2 max-w-2xl text-2xl font-bold text-paper text-balance md:text-4xl">
+            Onze pays. Plus de cent missions. Un seul système.
+          </h2>
+          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-8">
+            {proofStats.map((s) => (
+              <div key={s.label} className="border-l-2 border-accent pl-4 md:pl-6">
+                <p className="font-mono text-4xl font-bold text-accent md:text-5xl">{s.value}</p>
+                <p className="mt-2 text-sm font-medium text-paper">{s.label}</p>
+                <p className="mt-1 text-xs leading-relaxed text-paper/70">{s.detail}</p>
               </div>
             ))}
           </div>
-          <Button href="/solutions" variant="ghost" className="mt-8 px-0">
-            Explorer toutes les solutions
-          </Button>
+        </Container>
+      </section>
+
+      {/* Études de cas : un cas mis en avant, un second en appui */}
+      <Section tone="paper" className="!py-0">
+        <SectionBanner
+          label="Ce que nos missions produisent"
+          title="D'une marge cachée à un risque fiscal dormant"
+          tone="acier"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="py-10 pb-20 md:pb-28">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <p className="max-w-xl text-ink-soft">Problème, diagnostic, décision, intervention, résultat.</p>
+            <Link
+              href="/etudes-de-cas"
+              className="text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover"
+            >
+              Cliquez ici : toutes les études de cas →
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-6 lg:grid-cols-5">
+            <div className="lg:col-span-3">
+              <CaseStudyCard study={caseStudies[0]} />
+            </div>
+            <div className="lg:col-span-2">
+              <CaseStudyCard study={caseStudies[1]} />
+            </div>
+          </div>
         </div>
       </Section>
 
-      {/* Institutions */}
+      {/* Témoignages : une citation dominante, puis les deux autres en rang */}
       <Section tone="raised" className="!py-0">
-        <SectionBanner label="Institutions & grands acteurs" title="Une capacité construite pour les acteurs publics et financiers" tone="acier" className="-mx-6 md:-mx-10" />
-        <div className="grid gap-6 py-10 pb-20 sm:grid-cols-2 md:pb-28 lg:grid-cols-4">
-          {institutionSegments.map((seg) => (
-            <Link key={seg.slug} href={`/institutions/${seg.slug}`} className="group border border-line bg-paper p-6 hover:border-ink/40">
-              <h3 className="text-lg font-bold">{seg.name}</h3>
-              <p className="mt-2 text-sm text-ink-soft">{seg.summary}</p>
-              <span className="mt-4 inline-block text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
+        <SectionBanner
+          label="Trois pays, trois secteurs"
+          title="Ce qui revient : la capacité d'analyse et l'ancrage terrain"
+          tone="vert"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="py-10 pb-20 md:pb-28">
+          <figure className="relative mx-auto max-w-3xl border-y border-line py-10 text-center md:py-14">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-0 top-2 select-none font-display text-7xl leading-none text-accent/25 md:text-8xl"
+            >
+              &laquo;
+            </span>
+            <blockquote className="relative text-xl font-medium leading-snug text-ink text-balance md:text-3xl">
+              {featuredTestimonial.quote}
+            </blockquote>
+            <figcaption className="mt-6 text-sm">
+              <span className="font-bold text-ink">{featuredTestimonial.name}</span>
+              <span className="text-ink-soft">
+                , {featuredTestimonial.role}, {featuredTestimonial.organization}
+              </span>
+              <span className="mt-1 block font-mono text-xs uppercase tracking-wide text-ink-faint">
+                {featuredTestimonial.sector} · {featuredTestimonial.location}
+              </span>
+            </figcaption>
+          </figure>
+          <div className="mt-10">
+            <Testimonials items={otherTestimonials} />
+          </div>
+        </div>
+      </Section>
+
+      {/* Pilotage : aplat violet plein, une affirmation centrale */}
+      <section className="bg-offre py-20 md:py-28">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-paper/80">
+              Un rapport ne pilote rien tout seul
+            </p>
+            <h2 className="mt-4 text-2xl font-bold leading-tight text-paper text-balance md:text-4xl">
+              Un pilotage aux côtés du dirigeant, pas seulement un rapport
+            </h2>
+            <p className="mt-6 leading-relaxed text-paper/85">
+              MEDEGNAN peut rester engagé après le diagnostic. Animation des revues de direction, suivi des
+              indicateurs, aide à la décision, coordination des chantiers en cours, ajustement de trajectoire : un
+              accompagnement dans la durée, pas une offre forfaitaire figée.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <Button href="/solutions/pilotage" variant="onDark">
+                Operating Partner
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Solutions : titre collant à gauche, offres en liste à droite */}
+      <Section tone="paper" className="!py-0">
+        <SectionBanner
+          label="Six façons de traiter un problème réel"
+          title="Organisées par problème, pas par jargon"
+          tone="navy"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="grid gap-8 py-10 pb-20 md:grid-cols-[15rem_1fr] md:gap-12 md:pb-28">
+          <div className="self-start md:sticky md:top-24">
+            <p className="text-ink-soft">
+              Chaque catégorie répond à une situation précise, pas à une ligne de catalogue.
+            </p>
+            <Button href="/solutions" variant="ghost" className="mt-6 px-0">
+              Explorer toutes les solutions
+            </Button>
+          </div>
+          <div className="divide-y divide-line border-t border-line">
+            {offerCategories.map((c) => (
+              <div key={c.name} className="flex flex-col gap-1 py-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+                <h3 className="text-xl font-bold">{c.name}</h3>
+                <p className="text-sm text-ink-soft md:max-w-sm md:text-right">{c.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Institutions : rangées pleine largeur alternées, pas une grille de cartes */}
+      <Section tone="raised" className="!py-0">
+        <SectionBanner
+          label="États, ministères, fonds, banques"
+          title="La même méthode, à l'échelle publique et financière"
+          tone="acier"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="-mx-6 py-10 pb-20 md:-mx-10 md:pb-28">
+          {institutionSegments.map((seg, i) => (
+            <Link
+              key={seg.slug}
+              href={`/institutions/${seg.slug}`}
+              className={`flex flex-col gap-3 px-6 py-7 md:flex-row md:items-center md:justify-between md:gap-10 md:px-10 ${
+                i % 2 === 1 ? "bg-paper-deep" : "bg-paper"
+              }`}
+            >
+              <div className="md:flex md:items-baseline md:gap-6">
+                <h3 className="text-lg font-bold md:w-56 md:shrink-0">{seg.name}</h3>
+                <p className="mt-1 text-sm text-ink-soft md:mt-0">{seg.summary}</p>
+              </div>
+              <span className="shrink-0 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4">
                 Cliquez ici : en savoir plus →
               </span>
             </Link>
@@ -209,32 +329,39 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Ressources */}
-      <Section tone="paper" className="!py-0">
-        <SectionBanner label="Intelligence économique" title="Ressources" tone="teal" className="-mx-6 md:-mx-10" />
-        <div className="py-10 pb-20 md:pb-28">
-          <p className="max-w-2xl text-ink-soft">
-            Analyses, études et publications produites au fil des missions du cabinet : une base de connaissance en
-            construction, pas un flux de contenu générique.
-          </p>
-          <Button href="/ressources" variant="ghost" className="mt-6 px-0">
-            Explorer les ressources
-          </Button>
-        </div>
-      </Section>
+      {/* Ressources : respiration volontaire avant l'appel final */}
+      <section className="bg-paper py-24 md:py-32">
+        <Container>
+          <div className="max-w-xl">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-ink-soft">
+              Publié seulement quand il y a quelque chose à dire
+            </p>
+            <h2 className="mt-4 text-2xl font-bold text-balance md:text-3xl">
+              Une base de connaissance qui se construit avec les missions
+            </h2>
+            <p className="mt-5 leading-relaxed text-ink-soft">
+              Analyses, études et publications produites au fil des missions du cabinet, plutôt qu&apos;un flux de
+              contenu générique destiné à occuper l&apos;espace.
+            </p>
+            <Button href="/ressources" variant="ghost" className="mt-6 px-0">
+              Explorer les ressources
+            </Button>
+          </div>
+        </Container>
+      </section>
 
       {/* CTA final */}
-      <section className="bg-ink py-20 md:py-28">
+      <section className="border-t border-accent/20 bg-ink py-20 md:py-28">
         <Container>
           <div className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="h-px w-16 bg-accent" aria-hidden="true" />
               <h2 className="mt-6 max-w-xl text-3xl font-bold text-paper text-balance md:text-4xl">
-                Parlons de votre organisation.
+                Avant de décider, sachez où vous en êtes vraiment.
               </h2>
               <p className="mt-4 max-w-lg text-paper/75">
-                Diagnostic, structuration, transformation ou pilotage : commençons par comprendre où vous en êtes
-                réellement.
+                Diagnostic, structuration, transformation, pilotage : le point de départ est toujours le même,
+                comprendre la réalité avant d&apos;agir.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">

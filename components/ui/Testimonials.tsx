@@ -2,7 +2,7 @@ import type { Testimonial } from "@/lib/content/testimonials";
 
 export default function Testimonials({ items }: { items: Testimonial[] }) {
   return (
-    <div className="grid gap-6 md:grid-cols-3">
+    <div className={`grid gap-6 ${items.length >= 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
       {items.map((t) => (
         <figure key={t.name} className="flex flex-col border border-line bg-paper p-6 md:p-8">
           <blockquote className="flex-1 text-[1.05rem] leading-relaxed text-ink-soft text-pretty">
