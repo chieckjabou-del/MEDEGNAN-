@@ -13,7 +13,11 @@ import {
   governanceCadence,
   maturityLevels,
   quotes,
+  coreFunctions,
+  proofLevels,
+  firstVisitObjects,
 } from "@/lib/content/methodology";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Méthodologie · MEDEGNAN CORE",
@@ -102,6 +106,103 @@ export default function MethodologiePage() {
             Les niveaux 0 à 2 sont documentés en détail dans notre pratique. Les niveaux supérieurs s&apos;affinent
             mission après mission.
           </p>
+        </div>
+      </Section>
+
+      {/* Les douze fonctions : la grille de lecture appliquée à toute organisation */}
+      <Section tone="raised" className="!py-0">
+        <SectionBanner
+          label="La grille de lecture"
+          title="Douze fonctions, aucune laissée de côté"
+          tone="teal"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="py-10 pb-20 md:pb-28">
+          <p className="max-w-2xl leading-relaxed text-ink-soft">
+            Un diagnostic MEDEGNAN passe l&apos;organisation au crible des mêmes douze fonctions, quel que soit son
+            secteur ou sa taille. C&apos;est ce qui permet de comparer une mine et une boulangerie sans les traiter
+            de la même façon.
+          </p>
+          <ol className="mt-8 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {coreFunctions.map((f, i) => (
+              <Reveal as="li" key={f.code} delay={i * 45} className="flex items-baseline gap-4 bg-paper p-5">
+                <span className="font-mono text-sm font-bold text-analyse-text">{f.code}</span>
+                <span className="font-medium text-ink">{f.label}</span>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </Section>
+
+      {/* La première visite : huit objets dans un ordre imposé */}
+      <Section tone="paper" className="!py-0">
+        <SectionBanner
+          label="La première visite"
+          title="Huit objets, dans un ordre qui n'est pas indicatif"
+          tone="navy"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="py-10 pb-20 md:pb-28">
+          <p className="max-w-2xl leading-relaxed text-ink-soft">
+            Un diagnostic commence par ce que l&apos;on constate, pas par ce que l&apos;on nous raconte. Ces huit
+            objets sont examinés dans cet ordre précis. Les quatre repérés ci-dessous sont tenus même lorsque la
+            visite est écourtée : ce sont ceux qui ne dépendent de la disponibilité de personne.
+          </p>
+          <ol className="mt-8 divide-y divide-line border-y border-line">
+            {firstVisitObjects.map((o, i) => (
+              <Reveal
+                as="li"
+                key={o.rank}
+                delay={i * 50}
+                className="grid gap-2 py-5 md:grid-cols-[2.5rem_14rem_1fr] md:items-baseline md:gap-6"
+              >
+                <span className="font-mono text-sm font-bold text-ink-soft">0{o.rank}</span>
+                <span className="flex items-baseline gap-2 font-bold text-ink">
+                  {o.name}
+                  {o.kept && (
+                    <span className="shrink-0 rounded-sm bg-accent-soft px-1.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-wide text-ink">
+                      tenu
+                    </span>
+                  )}
+                </span>
+                <span className="text-sm leading-relaxed text-ink-soft">
+                  {o.action}. <span className="text-ink">{o.detects}.</span>
+                </span>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </Section>
+
+      {/* L'échelle de preuve */}
+      <Section tone="raised" className="!py-0">
+        <SectionBanner
+          label="Ce qui est prouvé, ce qui est déclaré"
+          title="Chaque constat porte son niveau de preuve"
+          tone="vert"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="py-10 pb-20 md:pb-28">
+          <p className="max-w-2xl leading-relaxed text-ink-soft">
+            Un diagnostic qui distingue ce qui est prouvé de ce qui est déclaré vaut infiniment plus qu&apos;un
+            diagnostic qui affirme tout au même titre. Le niveau atteint s&apos;écrit toujours, du plus fort au plus
+            faible.
+          </p>
+          <ol className="mt-8 flex flex-col gap-px overflow-hidden border border-line bg-line">
+            {proofLevels.map((p, i) => (
+              <Reveal
+                as="li"
+                key={p.rank}
+                delay={i * 60}
+                className="flex items-center gap-4 bg-paper px-5 py-4"
+              >
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-resultat font-mono text-sm font-bold text-resultat-text">
+                  {p.rank}
+                </span>
+                <span className="text-ink">{p.label}</span>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </Section>
 

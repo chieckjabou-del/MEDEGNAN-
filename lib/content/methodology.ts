@@ -85,6 +85,107 @@ export const corePhases: CorePhase[] = [
   },
 ];
 
+/**
+ * Les douze fonctions de la méthode CORE : la grille de lecture appliquée à
+ * toute organisation diagnostiquée.
+ * Source : référentiel interne du cabinet, table `fonction_core` du portail
+ * consultant (migration 001_j1_socle). Accents rétablis pour l'affichage.
+ */
+export const coreFunctions = [
+  { code: "F01", label: "Stratégie et gouvernance" },
+  { code: "F02", label: "Marketing et communication" },
+  { code: "F03", label: "Commercial et ventes" },
+  { code: "F04", label: "Approvisionnement et achats" },
+  { code: "F05", label: "Logistique et stock" },
+  { code: "F06", label: "Production et services" },
+  { code: "F07", label: "Ressources humaines et organisation" },
+  { code: "F08", label: "Administration et finance" },
+  { code: "F09", label: "Systèmes d'information" },
+  { code: "F10", label: "Juridique et conformité" },
+  { code: "F11", label: "RSE et durabilité" },
+  { code: "F12", label: "Innovation et transformation" },
+];
+
+/**
+ * Échelle de preuve, du plus fort au plus faible. Règle du cabinet : le niveau
+ * atteint s'écrit toujours.
+ * Source : table `niveau_de_preuve` du portail consultant (migration 46_j6g),
+ * échelle issue du référentiel MC-OBJETS.
+ */
+export const proofLevels = [
+  { rank: 1, label: "Source extérieure non contrôlée par le client" },
+  { rank: 2, label: "Document interne daté et signé" },
+  { rank: 3, label: "Constat physique direct" },
+  { rank: 4, label: "Déclarations concordantes de plusieurs personnes" },
+  { rank: 5, label: "Déclaration unique" },
+];
+
+/**
+ * Les huit objets de la première visite, dans un ordre imposé.
+ * Source : table `objet_sequence_courte` du portail consultant (migration
+ * 46_j6g), issue de MC-OBJETS et du cahier Académie MC-ACAD-M2S2-CAND-V2.
+ * `kept` marque les quatre objets tenus même lorsque la visite est écourtée.
+ */
+export const firstVisitObjects = [
+  {
+    rank: 1,
+    name: "Le produit",
+    action: "Vous le regardez avant de parler",
+    detects: "Conformité, dangerosité, étiquetage, et souvent la nature réelle de l'activité",
+    kept: true,
+  },
+  {
+    rank: 2,
+    name: "Le relevé bancaire",
+    action: "Vous le demandez dès la première visite",
+    detects:
+      "La position réelle de trésorerie. La réaction du dirigeant à la demande est elle-même une information",
+    kept: true,
+  },
+  {
+    rank: 3,
+    name: "Le titre et le registre des parts",
+    action: "Vous demandez à les voir",
+    detects: "Qui possède quoi, depuis quand, et les évictions informelles",
+    kept: true,
+  },
+  {
+    rank: 4,
+    name: "La personne indispensable",
+    action: "Vous demandez qui, en partant demain, arrêterait l'entreprise",
+    detects: "La dépendance à une personne unique",
+    kept: false,
+  },
+  {
+    rank: 5,
+    name: "Le point de sortie",
+    action: "Vous allez voir par où sortent les marchandises",
+    detects: "Le contrôle interne se voit en dix minutes à cet endroit",
+    kept: false,
+  },
+  {
+    rank: 6,
+    name: "La dette",
+    action: "Vous rapportez la dette à l'encaissement mensuel",
+    detects: "Le rang de gravité, par un rapport et non par un montant",
+    kept: false,
+  },
+  {
+    rank: 7,
+    name: "Le client qui pèse trop",
+    action: "Quelle part du chiffre d'affaires fait votre premier client",
+    detects: "La concentration, et l'absence de plan alternatif",
+    kept: false,
+  },
+  {
+    rank: 8,
+    name: "Le site",
+    action: "Vous le constatez en marchant",
+    detects: "L'organisation réelle, indépendamment du discours",
+    kept: true,
+  },
+];
+
 export const executionRhythm = [
   { label: "Diagnostic", detail: "Semaines 1–2" },
   { label: "Conception", detail: "Semaines 3–4" },
