@@ -5,7 +5,7 @@ import SectionBanner from "@/components/ui/SectionBanner";
 import { Button } from "@/components/ui/Button";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import CoreProcess from "@/components/ui/CoreProcess";
-import Testimonials from "@/components/ui/Testimonials";
+import TestimonialMarquee from "@/components/ui/TestimonialMarquee";
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
@@ -41,7 +41,6 @@ const problems = [
 // Témoignage mis en avant : celui du client institutionnel, dont l'attestation est
 // vérifiable en ligne. Les deux autres suivent en rang compact.
 const featuredTestimonial = testimonials[1];
-const otherTestimonials = testimonials.filter((t) => t !== featuredTestimonial);
 
 export default function HomePage() {
   return (
@@ -258,8 +257,8 @@ export default function HomePage() {
             </figcaption>
           </figure>
           </Reveal>
-          <div className="mt-10">
-            <Testimonials items={otherTestimonials} />
+          <div className="-mx-6 mt-12 md:-mx-10">
+            <TestimonialMarquee items={testimonials} />
           </div>
         </div>
       </Section>

@@ -5,6 +5,11 @@ export type Testimonial = {
   organization: string;
   sector: string;
   location: string;
+  /**
+   * Déduit de la fonction telle qu'elle est écrite et signée sur l'attestation
+   * ("Gérante", "Directeur"), jamais supposé à partir du prénom.
+   */
+  civilite: "femme" | "homme";
 };
 
 // Source : attestations de collaboration professionnelle signées, transmises par la
@@ -19,6 +24,7 @@ export const testimonials: Testimonial[] = [
     organization: "RAF Immobilier",
     sector: "Immobilier · gestion locative",
     location: "Paris, France",
+    civilite: "femme",
   },
   {
     quote:
@@ -28,6 +34,7 @@ export const testimonials: Testimonial[] = [
     organization: "CaRESaP, Cabinet de Recherche en Épidémiologie et en Santé des Populations",
     sector: "Recherche en santé publique",
     location: "Parakou, Bénin",
+    civilite: "homme",
   },
   {
     quote:
@@ -37,5 +44,6 @@ export const testimonials: Testimonial[] = [
     organization: "Semsy Services",
     sector: "Restauration",
     location: "Sénégal",
+    civilite: "femme",
   },
 ];

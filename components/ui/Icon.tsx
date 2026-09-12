@@ -20,7 +20,9 @@ export type IconName =
   | "banque"
   | "mail"
   | "telephone"
-  | "lieu";
+  | "lieu"
+  | "dirigeante"
+  | "dirigeant";
 
 const paths: Record<IconName, React.ReactNode> = {
   // Loupe sur un histogramme : lire la situation réelle
@@ -157,6 +159,24 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z" />
       <circle cx="12" cy="10" r="2.5" />
+    </>
+  ),
+  // Bustes sobres, de même poids graphique : ils signalent seulement la
+  // fonction telle qu'elle est signée sur l'attestation (gérante / directeur).
+  dirigeante: (
+    <>
+      <circle cx="12" cy="8.4" r="3.4" />
+      {/* Chevelure encadrant le visage : c'est elle qui différencie la
+          silhouette, y compris à 24 px. */}
+      <path d="M7.8 9.6C7.2 4.9 9.3 3.4 12 3.4s4.8 1.5 4.2 6.2" />
+      <path d="M7.9 8.6v3.4M16.1 8.6v3.4" />
+      <path d="M4.5 20.6c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6" />
+    </>
+  ),
+  dirigeant: (
+    <>
+      <circle cx="12" cy="8" r="3.6" />
+      <path d="M4.5 20.5c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6" />
     </>
   ),
 };
