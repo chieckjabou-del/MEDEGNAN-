@@ -6,7 +6,7 @@ import SectionBanner from "@/components/ui/SectionBanner";
 import OfferDetail from "@/components/ui/OfferDetail";
 import { offers } from "@/lib/content/offers";
 import { corePhases } from "@/lib/content/methodology";
-import PhaseTimeline from "@/components/ui/PhaseTimeline";
+import CoreProcess from "@/components/ui/CoreProcess";
 
 export const metadata: Metadata = {
   title: "Transformation",
@@ -32,7 +32,7 @@ export default function TransformationPage() {
       <Section tone="raised" className="!py-0">
         <SectionBanner label="Le rythme d'une transformation MEDEGNAN CORE" title="Quatre phases, un ordre non négociable" tone="rouge" className="-mx-6 md:-mx-10" />
         <div className="py-10 pb-20 md:pb-28">
-          <PhaseTimeline phases={corePhases} />
+          <CoreProcess phases={corePhases} />
         </div>
       </Section>
     </>

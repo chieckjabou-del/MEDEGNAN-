@@ -4,7 +4,7 @@ import Section from "@/components/ui/Section";
 import SectionBanner from "@/components/ui/SectionBanner";
 import { Button } from "@/components/ui/Button";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
-import PhaseTimeline from "@/components/ui/PhaseTimeline";
+import CoreProcess from "@/components/ui/CoreProcess";
 import Testimonials from "@/components/ui/Testimonials";
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
@@ -167,7 +167,7 @@ export default function HomePage() {
             </Button>
           </div>
           <div className="mt-12">
-            <PhaseTimeline phases={corePhases} />
+            <CoreProcess phases={corePhases} />
           </div>
         </div>
       </Section>

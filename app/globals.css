@@ -45,6 +45,14 @@
   --color-resultat: var(--mc-vert);
   --color-processus: var(--mc-bleu-acier);
 
+  /* Variantes assombries réservées au TEXTE de petite taille : les couleurs de
+     marque ci-dessus restent inchangées pour les aplats, pastilles et filets.
+     Ces variantes tiennent le seuil AA (4.5:1) sur blanc comme sur les deux
+     fonds bleutés du site. */
+  --color-analyse-text: #176b60;
+  --color-resultat-text: #1a7440;
+  --color-signal-text: #b33326;
+
   --font-display: var(--mc-font);
   --font-body: var(--mc-font);
   --font-mono: var(--mc-font);
@@ -72,6 +80,9 @@
   --color-offre: var(--color-offre);
   --color-resultat: var(--color-resultat);
   --color-processus: var(--color-processus);
+  --color-analyse-text: var(--color-analyse-text);
+  --color-resultat-text: var(--color-resultat-text);
+  --color-signal-text: var(--color-signal-text);
 
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -157,6 +168,23 @@ a {
   opacity: 1;
   transform: none;
   will-change: auto;
+}
+
+/* Rail de processus qui se trace quand son bloc parent apparaît. */
+.js [data-reveal] [data-rail] {
+  transform: scaleX(0);
+  transition: transform 1200ms cubic-bezier(0.22, 0.61, 0.36, 1) 160ms;
+}
+
+.js [data-reveal].is-revealed [data-rail] {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] [data-rail] {
+    transform: none;
+    transition: none;
+  }
 }
 
 @keyframes mc-marquee {

@@ -3,7 +3,8 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import SectionBanner from "@/components/ui/SectionBanner";
-import PhaseTimeline from "@/components/ui/PhaseTimeline";
+import CoreProcess from "@/components/ui/CoreProcess";
+import MaturityLadder from "@/components/ui/MaturityLadder";
 import {
   methodologyIntro,
   diagnosticTools,
@@ -58,7 +59,7 @@ export default function MethodologiePage() {
             structuré. Chaque phase conditionne l&apos;accès à la suivante.
           </p>
           <div className="mt-10">
-            <PhaseTimeline phases={corePhases} />
+            <CoreProcess phases={corePhases} />
           </div>
         </div>
       </Section>
@@ -96,27 +97,8 @@ export default function MethodologiePage() {
       <Section tone="paper" className="!py-0">
         <SectionBanner label="Trajectoire de maturité" title="Sept niveaux, du diagnostic initial à la gouvernance de scale" tone="acier" className="-mx-6 md:-mx-10" />
         <div className="py-10 pb-20 md:pb-28">
-          <div className="overflow-x-auto border border-line">
-            <table className="w-full min-w-[560px] border-collapse text-left text-sm">
-              <thead>
-                <tr className="bg-processus text-xs uppercase tracking-wide text-paper">
-                  <th className="py-3 px-4 font-bold">Niveau</th>
-                  <th className="py-3 px-4 font-bold">Objectif</th>
-                  <th className="py-3 px-4 font-bold">Durée indicative</th>
-                </tr>
-              </thead>
-              <tbody>
-                {maturityLevels.map((m, i) => (
-                  <tr key={m.level} className={i % 2 === 1 ? "bg-paper-raised" : "bg-paper"}>
-                    <td className="py-3 px-4 font-bold tabular text-ink">N{m.level}</td>
-                    <td className="py-3 px-4">{m.name}</td>
-                    <td className="py-3 px-4 text-ink-faint">{m.duration}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-6 max-w-2xl text-sm text-ink-faint">
+          <MaturityLadder levels={maturityLevels} />
+          <p className="mt-4 max-w-2xl text-sm text-ink-faint">
             Les niveaux 0 à 2 sont documentés en détail dans notre pratique. Les niveaux supérieurs s&apos;affinent
             mission après mission.
           </p>
