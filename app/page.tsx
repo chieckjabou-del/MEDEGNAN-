@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/Button";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import PhaseTimeline from "@/components/ui/PhaseTimeline";
 import Testimonials from "@/components/ui/Testimonials";
+import Icon from "@/components/ui/Icon";
+import { offerCategoryIcons, institutionIcons, problemIcons } from "@/lib/content/icon-map";
 import { site } from "@/lib/content/site";
 import { proofStats } from "@/lib/content/proofs";
 import { caseStudies } from "@/lib/content/case-studies";
@@ -130,11 +132,14 @@ export default function HomePage() {
               key={p.title}
               className="grid grid-cols-[2.5rem_1fr] gap-4 border-t border-line py-6 first:border-t-2 first:border-signal md:grid-cols-[4rem_1fr] md:gap-8"
             >
-              <span className="font-mono text-2xl font-bold text-signal md:text-3xl" aria-hidden="true">
-                0{i + 1}
+              <span className="flex items-start gap-3 font-mono text-2xl font-bold text-signal md:text-3xl">
+                <span aria-hidden="true">0{i + 1}</span>
               </span>
               <div>
-                <h3 className="text-lg font-bold md:text-xl">{p.title}</h3>
+                <div className="flex items-start gap-3">
+                  <Icon name={problemIcons[i]} size={26} className="mt-0.5 shrink-0 text-signal" />
+                  <h3 className="text-lg font-bold md:text-xl">{p.title}</h3>
+                </div>
                 <p className="mt-2 leading-relaxed text-ink-soft">{p.body}</p>
               </div>
             </div>
@@ -292,7 +297,10 @@ export default function HomePage() {
           <div className="divide-y divide-line border-t border-line">
             {offerCategories.map((c) => (
               <div key={c.name} className="flex flex-col gap-1 py-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
-                <h3 className="text-xl font-bold">{c.name}</h3>
+                <h3 className="flex items-center gap-3 text-xl font-bold">
+                  <Icon name={offerCategoryIcons[c.name]} size={24} className="shrink-0 text-deep" />
+                  {c.name}
+                </h3>
                 <p className="text-sm text-ink-soft md:max-w-sm md:text-right">{c.description}</p>
               </div>
             ))}
@@ -318,7 +326,10 @@ export default function HomePage() {
               }`}
             >
               <div className="md:flex md:items-baseline md:gap-6">
-                <h3 className="text-lg font-bold md:w-56 md:shrink-0">{seg.name}</h3>
+                <h3 className="flex items-center gap-3 text-lg font-bold md:w-64 md:shrink-0">
+                  <Icon name={institutionIcons[seg.slug]} size={24} className="shrink-0 text-processus" />
+                  {seg.name}
+                </h3>
                 <p className="mt-1 text-sm text-ink-soft md:mt-0">{seg.summary}</p>
               </div>
               <span className="shrink-0 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4">

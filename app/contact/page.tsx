@@ -4,6 +4,7 @@ import PageHero from "@/components/ui/PageHero";
 import Section, { Kicker } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import Icon from "@/components/ui/Icon";
 import { site } from "@/lib/content/site";
 
 export const metadata: Metadata = {
@@ -25,25 +26,35 @@ export default function ContactPage() {
         <div className="grid gap-10 md:grid-cols-2">
           <div>
             <Kicker>Coordonnées</Kicker>
-            <ul className="mt-4 flex flex-col gap-3 text-lg">
-              <li>
+            <ul className="mt-4 flex flex-col gap-4 text-lg">
+              <li className="flex items-center gap-3">
+                <Icon name="mail" size={22} className="shrink-0 text-deep" />
                 <a href={`mailto:${site.contact.email}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
                   {site.contact.email}
                 </a>
               </li>
-              <li>
-                <a href={`tel:${site.contact.phoneBenin.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
-                  {site.contact.phoneBenin}
-                </a>{" "}
-                <span className="text-sm text-ink-faint">(Bénin, WhatsApp)</span>
+              <li className="flex items-center gap-3">
+                <Icon name="telephone" size={22} className="shrink-0 text-deep" />
+                <span>
+                  <a href={`tel:${site.contact.phoneBenin.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
+                    {site.contact.phoneBenin}
+                  </a>{" "}
+                  <span className="text-sm text-ink-faint">(Bénin, WhatsApp)</span>
+                </span>
               </li>
-              <li>
-                <a href={`tel:${site.contact.phoneFrance.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
-                  {site.contact.phoneFrance}
-                </a>{" "}
-                <span className="text-sm text-ink-faint">(France)</span>
+              <li className="flex items-center gap-3">
+                <Icon name="telephone" size={22} className="shrink-0 text-deep" />
+                <span>
+                  <a href={`tel:${site.contact.phoneFrance.replace(/\s/g, "")}`} className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent-hover">
+                    {site.contact.phoneFrance}
+                  </a>{" "}
+                  <span className="text-sm text-ink-faint">(France)</span>
+                </span>
               </li>
-              <li className="text-ink-soft">{site.contact.city}</li>
+              <li className="flex items-center gap-3 text-ink-soft">
+                <Icon name="lieu" size={22} className="shrink-0 text-deep" />
+                {site.contact.city}
+              </li>
             </ul>
             <div className="mt-6">
               <WhatsAppButton message="Bonjour, je souhaite échanger avec MEDEGNAN CONSULTING." />
