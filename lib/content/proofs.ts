@@ -13,7 +13,11 @@ export const proofStats = [
   { value: "11", label: "pays couverts par le réseau", detail: "Afrique de l'Ouest, Centrale, océan Indien et diaspora" },
   { value: "600+", label: "missions accompagnées par le réseau", detail: "Cumul des missions conduites par les consultants du réseau" },
   { value: "50+", label: "consultants dans le réseau", detail: "Répartis sur les onze pays couverts" },
-  { value: "4", label: "phases par mission", detail: "Stabilisation, Structuration, Accélération, Domination" },
+  {
+    value: "40 M",
+    label: "vues sur une seule page, en 28 jours",
+    detail: "9,2 millions de spectateurs distincts, du 15 août au 11 septembre 2026",
+  },
 ];
 
 export const sectorsServed = [
