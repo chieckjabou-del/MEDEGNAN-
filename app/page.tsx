@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import SectionBanner from "@/components/ui/SectionBanner";
 import { Button } from "@/components/ui/Button";
-import CaseStudyCard from "@/components/ui/CaseStudyCard";
+import RailEtudes from "@/components/ui/RailEtudes";
 import CoverageMap from "@/components/ui/CoverageMap";
 import CoreProcess from "@/components/ui/CoreProcess";
 import TestimonialMarquee from "@/components/ui/TestimonialMarquee";
@@ -265,13 +265,11 @@ export default function HomePage() {
               Cliquez ici : toutes les études de cas →
             </Link>
           </div>
-          <div className="mt-8 grid gap-6 lg:grid-cols-5">
-            <Reveal className="lg:col-span-3">
-              <CaseStudyCard study={caseStudies[0]} />
-            </Reveal>
-            <Reveal delay={130} className="lg:col-span-2">
-              <CaseStudyCard study={caseStudies[1]} />
-            </Reveal>
+          {/* Les quatre études sont couchées sur un rail que l'on fait glisser.
+              La grille précédente n'en montrait que deux sur quatre : le rail
+              les rend toutes atteignables sans allonger la page. */}
+          <div className="mt-8">
+            <RailEtudes etudes={caseStudies} />
           </div>
         </div>
       </Section>

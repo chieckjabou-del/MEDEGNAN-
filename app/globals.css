@@ -196,6 +196,24 @@ a {
   }
 }
 
+/* Rail horizontal des études de cas.
+   La barre de défilement native est masquée parce qu'un repère dédié la
+   remplace, plus lisible et cliquable. Le défilement lui-même reste entier :
+   molette, doigt, pavé tactile et clavier continuent de fonctionner. */
+.mc-rail {
+  scrollbar-width: none;
+}
+
+.mc-rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* Le repère dépend du script pour suivre la position. Sans JavaScript il
+   resterait figé au départ et mentirait : on le retire. */
+html:not(.js) .mc-rail-jauge {
+  display: none;
+}
+
 /* Mur de preuves.
 
    Par défaut, c'est-à-dire sans JavaScript, sur petit écran, ou pour qui a
