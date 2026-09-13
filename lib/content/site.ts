@@ -39,6 +39,7 @@ export const primaryNav: NavItem[] = [
     children: [
       { label: "Pour les entreprises", href: "/solutions/entreprises", description: "PME, groupes, entrepreneurs" },
       { label: "Pour les institutions", href: "/solutions/institutions", description: "États, ministères, fonds, banques" },
+      { label: "Secteurs couverts", href: "/secteurs", description: "Trente-cinq familles, tous secteurs" },
       { label: "Structuration", href: "/solutions/structuration" },
       { label: "Croissance", href: "/solutions/croissance" },
       { label: "Transformation", href: "/solutions/transformation" },

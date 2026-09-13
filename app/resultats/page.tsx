@@ -3,7 +3,6 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import SectionBanner from "@/components/ui/SectionBanner";
-import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import CoverageMap from "@/components/ui/CoverageMap";
 import { proofStats, countriesServed } from "@/lib/content/proofs";
@@ -78,23 +77,11 @@ export default function ResultatsPage() {
             <p className="leading-relaxed text-ink-soft">{positionSectorielle.epreuve}</p>
           </div>
 
-          <h3 className="mt-14 font-mono text-xs font-bold uppercase tracking-[0.16em] text-analyse-text">
-            Cartographie indicative, en {famillesSectorielles.length} familles
-          </h3>
-          <ol className="mt-6 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
-            {famillesSectorielles.map((f, i) => (
-              <Reveal as="li" key={f.nom} delay={Math.min(i, 12) * 35} className="bg-paper p-5">
-                <h4 className="font-bold text-ink text-balance">{f.nom}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{f.exemples}</p>
-              </Reveal>
-            ))}
-          </ol>
-
-          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-faint">
-            Cette cartographie est indicative, jamais limitative. Une activité qui n&apos;y figure pas n&apos;est pas
-            une activité que le cabinet refuse : c&apos;est une activité que la cartographie n&apos;a pas encore
-            nommée. La méthode se construit sur le modèle économique réel, pas sur l&apos;appartenance à une case.
-          </p>
+          {/* La cartographie complète et le moteur qui la sous-tend vivent sur
+              leur propre page : les répéter ici les affaiblirait toutes deux. */}
+          <Button href="/secteurs" variant="secondary" className="mt-10">
+            Voir les {famillesSectorielles.length} familles et la méthode
+          </Button>
         </div>
       </Section>
 

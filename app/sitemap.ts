@@ -9,6 +9,7 @@ const staticRoutes = [
   "/solutions",
   "/rejoindre-le-reseau",
   "/referentiel-des-fuites",
+  "/secteurs",
   "/solutions/entreprises",
   "/solutions/institutions",
   "/solutions/structuration",
