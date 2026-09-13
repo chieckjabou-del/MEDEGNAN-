@@ -10,7 +10,7 @@ import TestimonialMarquee from "@/components/ui/TestimonialMarquee";
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
 import MotsReveles from "@/components/ui/MotsReveles";
-import CountUp from "@/components/ui/CountUp";
+import MurDePreuves from "@/components/ui/MurDePreuves";
 import Marquee from "@/components/ui/Marquee";
 import { offerCategoryIcons, institutionIcons, problemIcons } from "@/lib/content/icon-map";
 import { site } from "@/lib/content/site";
@@ -237,31 +237,14 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Preuves : le bandeau devient la section entière, mur de chiffres sur fond sombre */}
-      <section className="bg-ink py-20 md:py-28">
-        <Container>
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-accent">
-            Pas un discours, des chiffres
-          </p>
-          <Reveal as="h2" className="display-md mt-2 max-w-2xl font-bold text-paper text-balance">
-            <MotsReveles texte="Onze pays. Cinquante consultants. Un seul système." />
-          </Reveal>
-          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-8">
-            {proofStats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 110} className="border-l-2 border-accent pl-4 md:pl-6">
-                <p className="font-mono text-4xl font-bold text-accent md:text-5xl">
-                  <CountUp value={s.value} />
-                </p>
-                <p className="mt-2 text-sm font-medium text-paper">{s.label}</p>
-                <p className="mt-1 text-xs leading-relaxed text-paper/70">{s.detail}</p>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-        <div className="mt-14 border-y border-paper/15 py-4 text-paper/75">
-          <Marquee items={countriesServed} />
-        </div>
-      </section>
+      {/* Preuves : les chiffres se succèdent à pleine page pendant que le bloc
+          reste fixé. Le repli, sans JavaScript comme sur petit écran, est une
+          grille ordinaire des quatre chiffres. */}
+      <MurDePreuves preuves={proofStats} />
+
+      <div className="border-y border-paper/15 bg-ink py-4 text-paper/75">
+        <Marquee items={countriesServed} />
+      </div>
 
       {/* Études de cas : un cas mis en avant, un second en appui */}
       <Section tone="paper" className="!py-0">

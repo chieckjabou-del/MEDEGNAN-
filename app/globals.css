@@ -196,6 +196,103 @@ a {
   }
 }
 
+/* Mur de preuves.
+
+   Par défaut, c'est-à-dire sans JavaScript, sur petit écran, ou pour qui a
+   demandé moins de mouvement : une grille de quatre chiffres, dans l'ordre,
+   qui ne retient rien. C'est l'état de repli, et il est écrit en premier.
+
+   L'effet de fixation n'est ajouté qu'ensuite, sous les conditions qui le
+   rendent acceptable. Le composant ne calcule rien tant qu'elles ne sont pas
+   réunies : le CSS et le JavaScript s'accordent sur les mêmes seuils. */
+.mc-mur {
+  padding-block: 5rem;
+}
+
+.mc-mur-liste {
+  display: grid;
+  gap: 3rem;
+}
+
+.mc-mur-trame,
+.mc-mur-jauge {
+  display: none;
+}
+
+.mc-preuve-valeur {
+  font-size: clamp(3rem, 9vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.mc-preuve-libelle {
+  font-size: 1.125rem;
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .js .mc-mur {
+    /* Une hauteur d'écran par chiffre, plus une pour la sortie du bloc fixé. */
+    height: calc((var(--mc-mur-pas, 4) + 1) * 100vh);
+    padding-block: 0;
+  }
+
+  .js .mc-mur-ecran {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+  }
+
+  .js .mc-mur-trame {
+    display: block;
+    /* Débordement volontaire : la trame est coupée par les bords de l'écran,
+       ce qui la fait lire comme un fragment et non comme une vignette. */
+    top: 50%;
+    left: 50%;
+    width: min(150vh, 150vw);
+    height: min(150vh, 150vw);
+    translate: -50% -50%;
+    opacity: 0.5;
+  }
+
+  .js .mc-mur-jauge {
+    display: flex;
+  }
+
+  /* Les quatre chiffres occupent la même cellule : la hauteur du bloc ne dépend
+     donc pas de celui qui est affiché, et aucun n'est retiré du document. */
+  .js .mc-mur-liste {
+    display: grid;
+    grid-template-areas: "preuve";
+    gap: 0;
+  }
+
+  .js .mc-preuve {
+    grid-area: preuve;
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition:
+      opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .js .mc-preuve[data-actif] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .js .mc-preuve-valeur {
+    font-size: clamp(4.5rem, 15vw, 13rem);
+  }
+
+  .js .mc-preuve-libelle {
+    font-size: clamp(1.25rem, 2.2vw, 2rem);
+  }
+}
+
 /* Filet vertical, pendant du `data-rail` horizontal déjà en place. Il se
    déploie du haut vers le bas quand son bloc parent est révélé. */
 .js [data-reveal] [data-rail-v] {
@@ -327,10 +424,14 @@ a {
   letter-spacing: -0.024em;
 }
 
+/* Les titres de section montent d'un cran, sans aller jusqu'à l'échelle du
+   titre d'accueil. La borne haute est tenue par une contrainte concrète : trois
+   bandeaux de l'accueil se fixent sous l'en-tête pendant la lecture, et
+   au delà de ce corps, en-tête et bandeau réunis prennent trop d'écran. */
 .display-md {
-  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
-  line-height: 1.15;
-  letter-spacing: -0.018em;
+  font-size: clamp(1.6rem, 2.9vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.022em;
 }
 
 /* Accordéon des quatre phases.
