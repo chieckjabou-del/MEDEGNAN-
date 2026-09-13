@@ -53,10 +53,23 @@
   --color-resultat-text: #1a7440;
   --color-signal-text: #b33326;
 
+  /* `--mc-serif` et `--mc-sans` sont posées par next/font dans layout.tsx.
+     Les piles de repli derrière elles servent pendant le chargement de la
+     police, et le jour où l'une d'elles ne se charge pas : on y met des
+     familles réellement présentes sur les systèmes, pas une répétition du
+     nom de la police manquante. */
+  --mc-font: var(--mc-sans), "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  --mc-font-titre: var(--mc-serif), Georgia, "Times New Roman", serif;
+
+  /* `--font-display` reste la sans. Le serif n'est appelé que par les trois
+     règles `.display-*`, donc par les seuls grands titres. Deux raisons.
+     D'abord l'utilitaire `font-display` sert aussi au logo et à des sous-titres
+     de 20 px, or un serif de titrage à ce corps devient maigre et fragile.
+     Ensuite la charte MDDS v1.0 du cabinet prescrit une sans-serif sobre : le
+     serif est une extension réservée au titrage, pas une substitution. */
   --font-display: var(--mc-font);
   --font-body: var(--mc-font);
   --font-mono: var(--mc-font);
-  --mc-font: Arial, Helvetica, "Liberation Sans", sans-serif;
 }
 
 @theme inline {
@@ -120,6 +133,7 @@ html {
 
   h1, h2, h3, h4 {
     font-family: var(--mc-font);
+    font-optical-sizing: auto;
     color: var(--color-ink);
     letter-spacing: 0;
     font-weight: 700;
@@ -431,15 +445,21 @@ html:not(.js) .mc-rail-jauge {
    celle des sites que le client cite en référence, bien plus que la taille.
    Le resserrement est progressif, plus fort à mesure que le corps grandit. */
 .display-xl {
-  font-size: clamp(2.5rem, 5.6vw, 5.75rem);
-  line-height: 1.03;
-  letter-spacing: -0.028em;
+  font-family: var(--mc-font-titre);
+  /* Instrument Serif n'existe qu'en une graisse. Demander du gras forcerait le
+     navigateur à épaissir les tracés lui-même, ce qui empâte les déliés. */
+  font-weight: 400;
+  font-size: clamp(2.75rem, 6.2vw, 6.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
 }
 
 .display-lg {
-  font-size: clamp(2.125rem, 4.2vw, 4rem);
-  line-height: 1.06;
-  letter-spacing: -0.024em;
+  font-family: var(--mc-font-titre);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 4.6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 
 /* Les titres de section montent d'un cran, sans aller jusqu'à l'échelle du
@@ -447,9 +467,11 @@ html:not(.js) .mc-rail-jauge {
    bandeaux de l'accueil se fixent sous l'en-tête pendant la lecture, et
    au delà de ce corps, en-tête et bandeau réunis prennent trop d'écran. */
 .display-md {
-  font-size: clamp(1.6rem, 2.9vw, 2.75rem);
-  line-height: 1.12;
-  letter-spacing: -0.022em;
+  font-family: var(--mc-font-titre);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.1vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
 }
 
 /* Accordéon des quatre phases.
