@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const stages = [
-  { archetype: "Vous démarrez ou stabilisez", entry: "Diagnostic Stratégique", href: "/solutions/diagnostic-strategique" },
+  { archetype: "Vous démarrez ou stabilisez", entry: "Audit Flash", href: "/demander-un-diagnostic" },
   { archetype: "Vous voulez sortir du pilotage au ressenti", entry: "Structuration", href: "/solutions/structuration" },
   { archetype: "Votre croissance plafonne", entry: "Croissance", href: "/solutions/croissance" },
   { archetype: "Votre gouvernance est en tension", entry: "Transformation", href: "/solutions/transformation" },

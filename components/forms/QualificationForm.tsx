@@ -7,7 +7,7 @@ import { whatsappLink } from "@/lib/whatsapp";
 const orgTypes = ["Entreprise privée", "Institution publique", "Fonds / investisseur", "Banque / institution financière", "Autre"];
 const sizes = ["Moins de 10 employés", "10 à 50 employés", "50 à 200 employés", "Plus de 200 employés"];
 const urgencies = ["Faible : exploratoire", "Modérée : dans les prochains mois", "Élevée : dans les prochaines semaines", "Critique : situation urgente"];
-const supportTypes = ["Audit Flash", "Diagnostic Stratégique", "Structuration", "Transformation", "Accélération / croissance", "Pilotage & accompagnement (Operating Partner)", "Je ne sais pas encore"];
+const supportTypes = ["Audit Flash", "Structuration", "Transformation", "Accélération / croissance", "Pilotage & accompagnement (Operating Partner)", "Je ne sais pas encore"];
 const budgets = ["Moins de 500 000 FCFA", "500 000 – 1 500 000 FCFA", "1 500 000 – 4 000 000 FCFA", "Plus de 4 000 000 FCFA", "À définir avec vous"];
 
 const fieldClass =

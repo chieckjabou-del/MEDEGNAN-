@@ -29,23 +29,6 @@ export const offers: Offer[] = [
     cta: { label: "Réserver mon Audit Flash", href: "/demander-un-diagnostic" },
   },
   {
-    slug: "diagnostic-strategique",
-    category: "Diagnostiquer",
-    name: "Diagnostic Stratégique",
-    summary:
-      "Une lecture complète de la situation réelle de l'entreprise (financière, organisationnelle et concurrentielle), pour faire apparaître ce que les tableaux de bord habituels ne montrent pas.",
-    forWhom: "PME et entreprises en croissance qui veulent une base de décision fiable avant d'agir.",
-    includes: [
-      "Reconstruction financière indépendante (marge réelle, trésorerie, dépendances)",
-      "Cartographie organisationnelle et des risques",
-      "Positionnement concurrentiel",
-      "Rapport de diagnostic et recommandations priorisées",
-    ],
-    priceRange: "250 000 – 450 000 FCFA",
-    priceNote: "Mission de fond, généralement engagée après un Audit Flash. Le périmètre peut évoluer si le diagnostic révèle une réalité plus complexe.",
-    cta: { label: "Demander un diagnostic", href: "/demander-un-diagnostic" },
-  },
-  {
     slug: "audit-documentaire",
     category: "Diagnostiquer",
     name: "Audit Documentaire Approfondi",

@@ -3,9 +3,11 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import PageHero from "@/components/ui/PageHero";
 import Section from "@/components/ui/Section";
 import SectionBanner from "@/components/ui/SectionBanner";
+import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import CoverageMap from "@/components/ui/CoverageMap";
-import { proofStats, sectorsServed, countriesServed } from "@/lib/content/proofs";
+import { proofStats, countriesServed } from "@/lib/content/proofs";
+import { positionSectorielle, famillesSectorielles } from "@/lib/content/secteurs";
 import { caseStudies } from "@/lib/content/case-studies";
 
 export const metadata: Metadata = {
@@ -62,14 +64,38 @@ export default function ResultatsPage() {
       </Section>
 
       <Section tone="paper" className="!py-0">
-        <SectionBanner label="Secteurs accompagnés" title="Une pratique transversale" tone="teal" className="-mx-6 md:-mx-10" />
-        <ul className="flex flex-wrap gap-3 py-10 pb-20 md:pb-28">
-          {sectorsServed.map((s) => (
-            <li key={s} className="border border-ink/25 px-4 py-2 text-sm">
-              {s}
-            </li>
-          ))}
-        </ul>
+        <SectionBanner
+          label="Secteurs accompagnés"
+          title="Tous secteurs, et ce n'est pas une formule"
+          tone="teal"
+          className="-mx-6 md:-mx-10"
+        />
+        <div className="py-10 pb-20 md:pb-28">
+          <p className="max-w-3xl text-lg leading-relaxed text-ink">{positionSectorielle.phrase}</p>
+          <p className="mt-5 max-w-3xl leading-relaxed text-ink-soft">{positionSectorielle.pourquoi}</p>
+
+          <div className="mt-8 max-w-3xl border-l-2 border-analyse pl-6">
+            <p className="leading-relaxed text-ink-soft">{positionSectorielle.epreuve}</p>
+          </div>
+
+          <h3 className="mt-14 font-mono text-xs font-bold uppercase tracking-[0.16em] text-analyse-text">
+            Cartographie indicative, en {famillesSectorielles.length} familles
+          </h3>
+          <ol className="mt-6 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
+            {famillesSectorielles.map((f, i) => (
+              <Reveal as="li" key={f.nom} delay={Math.min(i, 12) * 35} className="bg-paper p-5">
+                <h4 className="font-bold text-ink text-balance">{f.nom}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{f.exemples}</p>
+              </Reveal>
+            ))}
+          </ol>
+
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-faint">
+            Cette cartographie est indicative, jamais limitative. Une activité qui n&apos;y figure pas n&apos;est pas
+            une activité que le cabinet refuse : c&apos;est une activité que la cartographie n&apos;a pas encore
+            nommée. La méthode se construit sur le modèle économique réel, pas sur l&apos;appartenance à une case.
+          </p>
+        </div>
       </Section>
 
       <Section tone="paper" className="!py-0">

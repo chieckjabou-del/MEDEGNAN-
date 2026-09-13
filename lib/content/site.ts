@@ -39,11 +39,11 @@ export const primaryNav: NavItem[] = [
     children: [
       { label: "Pour les entreprises", href: "/solutions/entreprises", description: "PME, groupes, entrepreneurs" },
       { label: "Pour les institutions", href: "/solutions/institutions", description: "États, ministères, fonds, banques" },
-      { label: "Diagnostic stratégique", href: "/solutions/diagnostic-strategique" },
       { label: "Structuration", href: "/solutions/structuration" },
       { label: "Croissance", href: "/solutions/croissance" },
       { label: "Transformation", href: "/solutions/transformation" },
       { label: "Pilotage & accompagnement", href: "/solutions/pilotage" },
+      { label: "Rejoindre le réseau", href: "/rejoindre-le-reseau", description: "Devenir consultant sous licence" },
     ],
   },
   {
@@ -82,8 +82,8 @@ export const footerLinks = {
   solutions: [
     { label: "Entreprises", href: "/solutions/entreprises" },
     { label: "Institutions", href: "/solutions/institutions" },
-    { label: "Diagnostic stratégique", href: "/solutions/diagnostic-strategique" },
     { label: "Pilotage & accompagnement", href: "/solutions/pilotage" },
+    { label: "Rejoindre le réseau", href: "/rejoindre-le-reseau" },
   ],
   ressources: [
     { label: "Analyses", href: "/ressources/analyses" },

@@ -20,16 +20,16 @@ export const proofStats = [
   },
 ];
 
-export const sectorsServed = [
-  "Distribution et agroalimentaire",
-  "Industrie et production",
-  "Cosmétique et transformation",
-  "BTP et marchés publics",
-  "Énergie et forage",
-  "Santé et pharmacie",
-  "Technologie et sûreté",
-  "Commerce",
-];
+/*
+ * `sectorsServed` a été retiré le 13 septembre 2026.
+ *
+ * Cette liste de huit secteurs était présentée comme le périmètre du cabinet.
+ * Un dirigeant dont le métier n'y figurait pas en concluait qu'il n'était pas
+ * concerné, alors que la méthode est construite pour décomposer un modèle
+ * économique inconnu. Le périmètre réel est « tous secteurs », et la
+ * cartographie indicative en trente-cinq familles vit désormais dans
+ * `lib/content/secteurs.ts`.
+ */
 
 export const countriesServed = [
   "Bénin",

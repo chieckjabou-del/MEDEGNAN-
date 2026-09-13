@@ -13,7 +13,7 @@ export const institutionSegments: InstitutionSegment[] = [
     summary:
       "Diagnostic de filières, structuration de programmes de développement économique, et digitalisation de l'administration au service d'objectifs mesurables.",
     capabilities: [
-      "Diagnostic stratégique de filière ou de secteur",
+      "Diagnostic de filière ou de secteur",
       "Structuration organisationnelle d'agences et de programmes",
       "Digitalisation et systèmes de pilotage de la performance publique",
     ],
@@ -37,7 +37,7 @@ export const institutionSegments: InstitutionSegment[] = [
     summary:
       "Diagnostic indépendant d'entreprises en portefeuille ou en cours d'instruction, et structuration pré-investissement pour sécuriser une décision de financement.",
     capabilities: [
-      "Diagnostic stratégique et financier indépendant d'une cible",
+      "Diagnostic financier et organisationnel indépendant d'une cible",
       "Structuration d'entreprises en vue d'une levée de fonds",
       "Suivi de la performance post-investissement",
     ],
