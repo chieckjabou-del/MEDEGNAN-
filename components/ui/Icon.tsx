@@ -22,7 +22,8 @@ export type IconName =
   | "telephone"
   | "lieu"
   | "dirigeante"
-  | "dirigeant";
+  | "dirigeant"
+  | "entreprise";
 
 const paths: Record<IconName, React.ReactNode> = {
   // Loupe sur un histogramme : lire la situation réelle
@@ -117,6 +118,17 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <path d="M3 9.5 12 4l9 5.5" />
       <path d="M5 9.5V18M9.5 9.5V18M14.5 9.5V18M19 9.5V18" />
+      <path d="M3 21h18" />
+    </>
+  ),
+  // Bâtiment d'exploitation et son atelier accolé : les entreprises.
+  // Le toit plat et les fenêtres régulières l'opposent au fronton et aux
+  // colonnes de l'icône « etat », qui porte les institutions.
+  entreprise: (
+    <>
+      <path d="M4 21V6.5h10V21" />
+      <path d="M14 21V11h6v10" />
+      <path d="M7 10h1.5M10.5 10H12M7 14h1.5M10.5 14H12M17 15h1" />
       <path d="M3 21h18" />
     </>
   ),

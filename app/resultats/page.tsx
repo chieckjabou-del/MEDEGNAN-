@@ -43,7 +43,7 @@ export default function ResultatsPage() {
           className="-mx-6 md:-mx-10"
         />
         <div className="grid gap-10 py-10 pb-20 md:pb-28 lg:grid-cols-[1fr_20rem] lg:gap-16">
-          <CoverageMap className="max-w-xl lg:max-w-none" />
+          <CoverageMap className="max-w-xl lg:max-w-none" reseau />
           <div className="self-center">
             <p className="text-ink-soft">
               Le réseau couvre l&apos;Afrique de l&apos;Ouest, l&apos;Afrique centrale, l&apos;océan Indien et la

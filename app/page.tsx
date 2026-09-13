@@ -81,7 +81,7 @@ export default function HomePage() {
                 haut qu'un écran et les deux boutons d'appel passent sous la
                 ligne de flottaison. */}
             <figure className="m-0 w-full max-w-[27rem] lg:justify-self-end">
-              <CoverageMap variant="sombre" />
+              <CoverageMap variant="sombre" reseau />
               <figcaption className="mt-5 border-t border-paper/15 pt-4 font-mono text-xs font-bold uppercase tracking-[0.16em] text-accent">
                 Onze pays couverts par le réseau
               </figcaption>
@@ -103,8 +103,15 @@ export default function HomePage() {
             href="/solutions/entreprises"
             className="group relative flex flex-col justify-between overflow-hidden bg-deep px-6 py-14 text-paper md:px-12 md:py-20"
           >
-            <span className="pointer-events-none absolute right-6 top-6 select-none font-mono text-sm font-bold tracking-widest text-accent md:right-10">
-              01
+            {/* Cartouche encadré : le chiffre seul se perdait dans l'angle.
+                L'icône porte le sens, le chiffre garde l'ordre de lecture, et
+                le cadre vitré les rend visibles sur le fond profond. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute right-6 top-6 flex select-none items-center gap-3 rounded-sm border border-accent/40 bg-paper/5 px-3 py-2 backdrop-blur-[2px] transition-colors group-hover:border-accent/80 md:right-10"
+            >
+              <Icon name="entreprise" size={22} className="text-accent" />
+              <span className="font-mono text-sm font-bold tracking-widest text-accent">01</span>
             </span>
             <div className="relative">
               <span className="text-xs font-bold uppercase tracking-wide text-accent">Entreprises</span>
@@ -124,8 +131,12 @@ export default function HomePage() {
             href="/solutions/institutions"
             className="group relative flex flex-col justify-between overflow-hidden bg-paper-raised px-6 py-14 md:px-12 md:py-20"
           >
-            <span className="pointer-events-none absolute right-6 top-6 select-none font-mono text-sm font-bold tracking-widest text-ink-soft md:right-10">
-              02
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute right-6 top-6 flex select-none items-center gap-3 rounded-sm border border-ink/25 bg-paper/50 px-3 py-2 backdrop-blur-[2px] transition-colors group-hover:border-ink/55 md:right-10"
+            >
+              <Icon name="etat" size={22} className="text-deep" />
+              <span className="font-mono text-sm font-bold tracking-widest text-ink-soft">02</span>
             </span>
             <div className="relative">
               <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Institutions</span>

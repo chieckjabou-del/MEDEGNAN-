@@ -28,3 +28,62 @@ export const coveredCountries: CoveredCountry[] = [
   { label: "Burkina Faso", d: "M245 615L242 616L240 616L236 615L233 614L230 613L228 615L226 616L224 615L222 615L219 615L215 615L210 615L206 615L203 616L200 616L198 619L198 620L199 622L199 624L200 625L200 629L200 631L201 634L198 634L197 632L195 630L192 629L190 629L187 629L185 630L182 631L181 632L179 632L177 631L175 630L173 629L172 626L170 624L168 624L166 623L166 621L167 618L167 616L167 614L169 611L169 609L169 607L169 605L171 603L173 603L175 602L177 601L179 599L179 597L179 595L182 593L181 591L181 589L182 587L184 585L186 586L190 588L192 587L194 585L194 583L196 582L198 580L198 578L202 575L208 575L210 572L212 571L215 570L219 568L221 567L223 566L224 564L227 564L229 565L231 564L234 565L237 566L236 568L236 569L236 571L238 574L238 576L239 578L240 580L241 581L244 582L245 583L248 585L246 586L246 588L246 590L250 592L252 594L254 595L257 595L259 594L260 595L261 597L259 598L261 601L263 603L262 607L258 610L254 610L251 610L250 612L248 612L247 614L245 615Z" },
   { label: "Bénin", d: "M254 675L256 674L255 672L254 670L254 668L253 667L254 661L254 656L254 652L254 649L254 646L254 643L254 640L251 637L251 635L250 631L250 628L248 627L246 625L244 623L244 619L245 617L246 615L247 613L249 612L251 611L252 610L257 610L261 607L263 605L264 603L263 600L266 599L268 598L273 601L274 604L276 605L278 607L277 609L279 613L280 616L280 618L281 620L280 622L279 623L278 625L278 628L277 630L275 631L274 633L273 636L272 638L270 640L267 643L267 645L267 647L267 649L267 652L267 654L267 656L268 658L268 660L268 663L267 665L268 668L267 670L267 672L262 674L256 674L254 675Z" }
 ];
+
+/**
+ * Points d'ancrage du réseau, un par pays couvert.
+ *
+ * Les coordonnées ne sont pas placées à l'œil : chaque point est le centre de
+ * la boîte englobante du plus grand morceau du tracé du pays, mesuré dans le
+ * navigateur sur le SVG rendu. Le détail du « plus grand morceau » compte : le
+ * tracé de la France porte neuf morceaux, dont des territoires lointains, et
+ * la boîte englobante de l'ensemble sort du cadre de la carte. Son centre
+ * serait tombé au milieu de l'Atlantique.
+ *
+ * Pour les Comores, on reprend la position du repère cerclé déjà utilisé pour
+ * l'archipel, trop petit pour être lisible à cette échelle.
+ */
+export type NetworkNode = { label: string; x: number; y: number; siege?: boolean };
+
+export const networkNodes: NetworkNode[] = [
+  { label: "Bénin", x: 262.5, y: 636.5, siege: true },
+  { label: "Burkina Faso", x: 214.5, y: 599 },
+  { label: "Mali", x: 184.5, y: 530 },
+  { label: "Côte d'Ivoire", x: 165.5, y: 658.5 },
+  { label: "Guinée", x: 94, y: 628 },
+  { label: "Sénégal", x: 56, y: 571.5 },
+  { label: "Cameroun", x: 386, y: 659.5 },
+  { label: "Tchad", x: 464, y: 557 },
+  { label: "République démocratique du Congo", x: 501.5, y: 802 },
+  { label: "Comores", x: 774, y: 899 },
+  { label: "France", x: 254.5, y: 96.5 },
+];
+
+/**
+ * Les fils du réseau.
+ *
+ * Deux familles, et la distinction est volontaire. Les liaisons de siège
+ * partent toutes de Cotonou : c'est de là que le cabinet coordonne. Les
+ * liaisons latérales relient des pays voisins entre eux, et disent ce qu'une
+ * simple étoile ne dirait pas, à savoir que les consultants travaillent aussi
+ * directement les uns avec les autres.
+ *
+ * On ne relie pas tout le monde à tout le monde : onze points donneraient
+ * cinquante-cinq fils, et la carte deviendrait un grillage illisible.
+ */
+export const networkLinks: { de: string; vers: string; lateral?: boolean }[] = [
+  { de: "Bénin", vers: "Burkina Faso" },
+  { de: "Bénin", vers: "Mali" },
+  { de: "Bénin", vers: "Côte d'Ivoire" },
+  { de: "Bénin", vers: "Guinée" },
+  { de: "Bénin", vers: "Sénégal" },
+  { de: "Bénin", vers: "Cameroun" },
+  { de: "Bénin", vers: "Tchad" },
+  { de: "Bénin", vers: "République démocratique du Congo" },
+  { de: "Bénin", vers: "Comores" },
+  { de: "Bénin", vers: "France" },
+  { de: "Sénégal", vers: "Guinée", lateral: true },
+  { de: "Guinée", vers: "Côte d'Ivoire", lateral: true },
+  { de: "Mali", vers: "Burkina Faso", lateral: true },
+  { de: "Cameroun", vers: "Tchad", lateral: true },
+  { de: "Cameroun", vers: "République démocratique du Congo", lateral: true },
+];

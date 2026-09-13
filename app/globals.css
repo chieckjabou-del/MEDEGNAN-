@@ -196,6 +196,63 @@ a {
   }
 }
 
+/* Réseau posé sur la carte : on plante les épingles, puis on tend les fils.
+   L'ordre compte, c'est celui du tableau d'enquête auquel l'image renvoie.
+   Les deux animations se terminent sur leur état visible et s'y arrêtent. */
+@keyframes mc-epingle-pose {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes mc-fil-trace {
+  from {
+    stroke-dashoffset: 1;
+    opacity: var(--mc-fil-opacite, 0.6);
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: var(--mc-fil-opacite, 0.6);
+  }
+}
+
+.mc-epingle {
+  opacity: 0;
+  /* L'échelle doit partir du centre de l'épingle, pas de l'angle du cadre SVG. */
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mc-epingle-pose 520ms cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+}
+
+.mc-fil {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation: mc-fil-trace 900ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-epingle,
+  .mc-fil {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+
+  .mc-fil {
+    opacity: var(--mc-fil-opacite, 0.6);
+  }
+}
+
 /* Échelle d'affichage.
 
    Deux corrections par rapport aux tailles Tailwind utilisées jusqu'ici.
