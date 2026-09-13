@@ -4,6 +4,7 @@ import Section from "@/components/ui/Section";
 import SectionBanner from "@/components/ui/SectionBanner";
 import { Button } from "@/components/ui/Button";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
+import CoverageMap from "@/components/ui/CoverageMap";
 import CoreProcess from "@/components/ui/CoreProcess";
 import TestimonialMarquee from "@/components/ui/TestimonialMarquee";
 import Icon from "@/components/ui/Icon";
@@ -45,25 +46,46 @@ const featuredTestimonial = testimonials[1];
 export default function HomePage() {
   return (
     <>
+      {/* Le bandeau d'accueil tient sur deux colonnes à partir de 1024 px. La
+          carte occupe la droite, qui restait vide : c'est le seul visuel du
+          cabinet qui soit à la fois réel, vérifiable et propre à lui. */}
       <section className="bg-ink">
-        <Container className="py-20 md:py-32">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-accent">{site.name}</p>
-          <div className="mt-4 h-px w-16 bg-accent" aria-hidden="true" />
-          <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.1] text-paper text-balance md:text-7xl">
-            La plupart des organisations savent qu&apos;elles bloquent. Peu savent où.
-          </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-paper/85 text-pretty md:text-xl">
-            {site.baseline}. MEDEGNAN CONSULTING établit d&apos;abord la situation réelle d&apos;une entreprise ou
-            d&apos;une institution, isole ce qui freine sa performance, puis accompagne l&apos;exécution jusqu&apos;au
-            résultat mesuré, pas jusqu&apos;à la remise du rapport.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Button href="/demander-un-diagnostic" variant="accent">
-              Réserver mon Audit Flash
-            </Button>
-            <Button href="/methodologie" variant="onDark">
-              Découvrir la méthode
-            </Button>
+        <Container className="py-16 md:py-20">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
+            <div>
+              {/* Le surtitre porte la baseline plutôt que le nom du cabinet :
+                  le nom est déjà dans l'en-tête, deux lignes plus haut. */}
+              <p className="max-w-[46ch] font-mono text-xs font-bold uppercase tracking-[0.18em] text-accent">
+                {site.baseline}
+              </p>
+              <div className="mt-4 h-px w-16 bg-accent" aria-hidden="true" />
+              <h1 className="display-xl mt-6 max-w-[17ch] font-bold text-paper text-balance">
+                La plupart des organisations savent qu&apos;elles bloquent. Peu savent où.
+              </h1>
+              <p className="mt-7 max-w-[56ch] text-lg leading-relaxed text-paper/85 text-pretty md:text-xl">
+                Nous établissons la situation réelle d&apos;une entreprise ou d&apos;une institution, isolons ce qui
+                freine sa performance, puis accompagnons l&apos;exécution jusqu&apos;au résultat mesuré, pas
+                jusqu&apos;à la remise du rapport.
+              </p>
+              <div className="mt-9 flex flex-wrap gap-4">
+                <Button href="/demander-un-diagnostic" variant="accent">
+                  Réserver mon Audit Flash
+                </Button>
+                <Button href="/methodologie" variant="onDark">
+                  Découvrir la méthode
+                </Button>
+              </div>
+            </div>
+
+            {/* La carte est bornée en largeur : au delà, le bandeau devient plus
+                haut qu'un écran et les deux boutons d'appel passent sous la
+                ligne de flottaison. */}
+            <figure className="m-0 w-full max-w-[27rem] lg:justify-self-end">
+              <CoverageMap variant="sombre" />
+              <figcaption className="mt-5 border-t border-paper/15 pt-4 font-mono text-xs font-bold uppercase tracking-[0.16em] text-accent">
+                Onze pays couverts par le réseau
+              </figcaption>
+            </figure>
           </div>
         </Container>
       </section>
@@ -123,9 +145,10 @@ export default function HomePage() {
       {/* Problèmes traités : liste de dossier numérotée, pas une grille de cartes */}
       <Section tone="raised" className="!py-0">
         <SectionBanner
-          label="Huit secteurs, les mêmes signaux"
+          label="Tous secteurs, les mêmes signaux"
           title="Les mêmes signaux reviennent, quel que soit le secteur"
           tone="rouge"
+          sticky
           className="-mx-6 md:-mx-10"
         />
         <div className="max-w-3xl py-10 pb-20 md:pb-28">
@@ -203,6 +226,7 @@ export default function HomePage() {
           label="Ce que nos missions produisent"
           title="D'une marge cachée à un risque fiscal dormant"
           tone="acier"
+          sticky
           className="-mx-6 md:-mx-10"
         />
         <div className="py-10 pb-20 md:pb-28">
@@ -324,6 +348,7 @@ export default function HomePage() {
           label="États, ministères, fonds, banques"
           title="La même méthode, à l'échelle publique et financière"
           tone="acier"
+          sticky
           className="-mx-6 md:-mx-10"
         />
         <div className="-mx-6 py-10 pb-20 md:-mx-10 md:pb-28">
