@@ -63,6 +63,7 @@ export const primaryNav: NavItem[] = [
     label: "Ressources",
     href: "/ressources",
     children: [
+      { label: "Référentiel des fuites", href: "/referentiel-des-fuites" },
       { label: "Analyses", href: "/ressources/analyses" },
       { label: "Études", href: "/ressources/etudes" },
       { label: "Publications", href: "/ressources/publications" },
