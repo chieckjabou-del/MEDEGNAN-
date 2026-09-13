@@ -17,7 +17,7 @@ export default function Reveal({
   children: ReactNode;
   className?: string;
   delay?: number;
-  as?: "div" | "li" | "section";
+  as?: "div" | "li" | "section" | "figure" | "h1" | "h2" | "h3" | "p" | "blockquote";
 }) {
   const ref = useRef<HTMLElement>(null);
 

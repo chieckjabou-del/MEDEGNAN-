@@ -9,6 +9,7 @@ import CoreProcess from "@/components/ui/CoreProcess";
 import TestimonialMarquee from "@/components/ui/TestimonialMarquee";
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
+import MotsReveles from "@/components/ui/MotsReveles";
 import CountUp from "@/components/ui/CountUp";
 import Marquee from "@/components/ui/Marquee";
 import { offerCategoryIcons, institutionIcons, problemIcons } from "@/lib/content/icon-map";
@@ -59,9 +60,9 @@ export default function HomePage() {
                 {site.baseline}
               </p>
               <div className="mt-4 h-px w-16 bg-accent" aria-hidden="true" />
-              <h1 className="display-xl mt-6 max-w-[17ch] font-bold text-paper text-balance">
-                La plupart des organisations savent qu&apos;elles bloquent. Peu savent où.
-              </h1>
+              <Reveal as="h1" className="display-xl mt-6 max-w-[17ch] font-bold text-paper text-balance">
+                <MotsReveles texte="La plupart des organisations savent qu'elles bloquent. Peu savent où." />
+              </Reveal>
               <p className="mt-7 max-w-[56ch] text-lg leading-relaxed text-paper/85 text-pretty md:text-xl">
                 Nous établissons la situation réelle d&apos;une entreprise ou d&apos;une institution, isolons ce qui
                 freine sa performance, puis accompagnons l&apos;exécution jusqu&apos;au résultat mesuré, pas
@@ -99,57 +100,88 @@ export default function HomePage() {
           className="-mx-6 md:-mx-10"
         />
         <div className="-mx-6 grid md:-mx-10 md:grid-cols-2">
-          <Link
-            href="/solutions/entreprises"
-            className="group relative flex flex-col justify-between overflow-hidden bg-deep px-6 py-14 text-paper md:px-12 md:py-20"
-          >
-            {/* Cartouche encadré : le chiffre seul se perdait dans l'angle.
-                L'icône porte le sens, le chiffre garde l'ordre de lecture, et
-                le cadre vitré les rend visibles sur le fond profond. */}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute right-6 top-6 flex select-none items-center gap-3 rounded-sm border border-accent/40 bg-paper/5 px-3 py-2 backdrop-blur-[2px] transition-colors group-hover:border-accent/80 md:right-10"
+          <Reveal className="flex">
+            <Link
+              href="/solutions/entreprises"
+              className="group relative flex w-full flex-col justify-between overflow-hidden bg-deep px-6 py-14 text-paper md:px-12 md:py-20"
             >
-              <Icon name="entreprise" size={22} className="text-accent" />
-              <span className="font-mono text-sm font-bold tracking-widest text-accent">01</span>
-            </span>
-            <div className="relative">
-              <span className="text-xs font-bold uppercase tracking-wide text-accent">Entreprises</span>
-              <h3 className="mt-3 max-w-sm text-2xl font-bold text-paper md:text-3xl">
-                PME, groupes, entrepreneurs
-              </h3>
-              <p className="mt-4 max-w-md text-paper/80">
-                Du dirigeant qui sort du chaos initial au groupe qui prépare sa prochaine croissance : diagnostiquer,
-                structurer, accélérer, piloter.
-              </p>
-            </div>
-            <span className="relative mt-10 inline-flex items-center gap-1 text-sm font-medium text-paper underline decoration-accent decoration-2 underline-offset-4">
-              Cliquez ici : solutions entreprises →
-            </span>
-          </Link>
-          <Link
-            href="/solutions/institutions"
-            className="group relative flex flex-col justify-between overflow-hidden bg-paper-raised px-6 py-14 md:px-12 md:py-20"
-          >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute right-6 top-6 flex select-none items-center gap-3 rounded-sm border border-ink/25 bg-paper/50 px-3 py-2 backdrop-blur-[2px] transition-colors group-hover:border-ink/55 md:right-10"
+              {/* Cartouche encadré : le chiffre seul se perdait dans l'angle.
+                  L'icône porte le sens, le chiffre garde l'ordre de lecture, et
+                  le cadre vitré les rend visibles sur le fond profond.
+                  Deux filets s'en déploient, l'un vers la gauche, l'autre vers
+                  le bas, et s'allongent au survol : le cartouche cesse d'être
+                  posé dans un angle, il s'attache à la carte. */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute right-6 top-6 block select-none md:right-10"
+              >
+                <span className="relative block">
+                  <span className="flex items-center gap-3 rounded-sm border border-accent/40 bg-paper/5 px-3 py-2 backdrop-blur-[2px] transition-colors group-hover:border-accent/80">
+                    <Icon name="entreprise" size={22} className="text-accent" />
+                    <span className="font-mono text-sm font-bold tracking-widest text-accent">01</span>
+                  </span>
+                  <span
+                    data-rail=""
+                    className="absolute right-full top-1/2 h-px w-16 origin-right bg-accent/45 transition-[width] duration-500 group-hover:w-32"
+                  />
+                  <span
+                    data-rail-v=""
+                    className="absolute right-6 top-full h-12 w-px origin-top bg-accent/45 transition-[height] duration-500 group-hover:h-24"
+                  />
+                </span>
+              </span>
+              <div className="relative">
+                <span className="text-xs font-bold uppercase tracking-wide text-accent">Entreprises</span>
+                <h3 className="mt-3 max-w-sm text-2xl font-bold text-paper md:text-3xl">
+                  PME, groupes, entrepreneurs
+                </h3>
+                <p className="mt-4 max-w-md text-paper/80">
+                  Du dirigeant qui sort du chaos initial au groupe qui prépare sa prochaine croissance :
+                  diagnostiquer, structurer, accélérer, piloter.
+                </p>
+              </div>
+              <span className="relative mt-10 inline-flex items-center gap-1 text-sm font-medium text-paper underline decoration-accent decoration-2 underline-offset-4">
+                Cliquez ici : solutions entreprises →
+              </span>
+            </Link>
+          </Reveal>
+          <Reveal delay={120} className="flex">
+            <Link
+              href="/solutions/institutions"
+              className="group relative flex w-full flex-col justify-between overflow-hidden bg-paper-raised px-6 py-14 md:px-12 md:py-20"
             >
-              <Icon name="etat" size={22} className="text-deep" />
-              <span className="font-mono text-sm font-bold tracking-widest text-ink-soft">02</span>
-            </span>
-            <div className="relative">
-              <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Institutions</span>
-              <h3 className="mt-3 max-w-sm text-2xl font-bold md:text-3xl">États, ministères, fonds, banques</h3>
-              <p className="mt-4 max-w-md text-ink-soft">
-                Diagnostic de filière, structuration de programmes, digitalisation de la performance publique,
-                accompagnement des décisions d&apos;investissement.
-              </p>
-            </div>
-            <span className="relative mt-10 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
-              Cliquez ici : solutions institutions →
-            </span>
-          </Link>
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute right-6 top-6 block select-none md:right-10"
+              >
+                <span className="relative block">
+                  <span className="flex items-center gap-3 rounded-sm border border-ink/25 bg-paper/50 px-3 py-2 backdrop-blur-[2px] transition-colors group-hover:border-ink/55">
+                    <Icon name="etat" size={22} className="text-deep" />
+                    <span className="font-mono text-sm font-bold tracking-widest text-ink-soft">02</span>
+                  </span>
+                  <span
+                    data-rail=""
+                    className="absolute right-full top-1/2 h-px w-16 origin-right bg-ink/25 transition-[width] duration-500 group-hover:w-32"
+                  />
+                  <span
+                    data-rail-v=""
+                    className="absolute right-6 top-full h-12 w-px origin-top bg-ink/25 transition-[height] duration-500 group-hover:h-24"
+                  />
+                </span>
+              </span>
+              <div className="relative">
+                <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Institutions</span>
+                <h3 className="mt-3 max-w-sm text-2xl font-bold md:text-3xl">États, ministères, fonds, banques</h3>
+                <p className="mt-4 max-w-md text-ink-soft">
+                  Diagnostic de filière, structuration de programmes, digitalisation de la performance publique,
+                  accompagnement des décisions d&apos;investissement.
+                </p>
+              </div>
+              <span className="relative mt-10 inline-flex items-center gap-1 text-sm font-medium underline decoration-accent decoration-2 underline-offset-4 group-hover:text-accent-hover">
+                Cliquez ici : solutions institutions →
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </Section>
 
@@ -211,9 +243,9 @@ export default function HomePage() {
           <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-accent">
             Pas un discours, des chiffres
           </p>
-          <h2 className="mt-2 max-w-2xl text-2xl font-bold text-paper text-balance md:text-4xl">
-            Onze pays. Cinquante consultants. Un seul système.
-          </h2>
+          <Reveal as="h2" className="display-md mt-2 max-w-2xl font-bold text-paper text-balance">
+            <MotsReveles texte="Onze pays. Cinquante consultants. Un seul système." />
+          </Reveal>
           <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-8">
             {proofStats.map((s, i) => (
               <Reveal key={s.label} delay={i * 110} className="border-l-2 border-accent pl-4 md:pl-6">
@@ -413,9 +445,9 @@ export default function HomePage() {
           <div className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="h-px w-16 bg-accent" aria-hidden="true" />
-              <h2 className="mt-6 max-w-xl text-3xl font-bold text-paper text-balance md:text-4xl">
-                Avant de décider, sachez où vous en êtes vraiment.
-              </h2>
+              <Reveal as="h2" className="display-md mt-6 max-w-xl font-bold text-paper text-balance">
+                <MotsReveles texte="Avant de décider, sachez où vous en êtes vraiment." />
+              </Reveal>
               <p className="mt-4 max-w-lg text-paper/75">
                 Diagnostic, structuration, transformation, pilotage : le point de départ est toujours le même,
                 comprendre la réalité avant d&apos;agir.
