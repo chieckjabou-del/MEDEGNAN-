@@ -4,7 +4,7 @@
  * GÉNÉRÉ DEPUIS LA BASE, PAS ÉCRIT À LA MAIN.
  * Source : projet Supabase `medegnan-portail`, vue `taxonomie_sectorielle`
  * et tables `logique_economique` et `modificateur`, lues le 13 septembre
- * 2026. Le script de régénération est `scripts/generer-taxonomie.mjs`.
+ * 2026, après l'arbitrage du fondateur du même jour. Le script de régénération est `scripts/generer-taxonomie.mjs`.
  *
  * POURQUOI UN FICHIER GÉNÉRÉ PLUTÔT QU'UNE LECTURE DIRECTE.
  * Le site est entièrement prérendu à la compilation et ne dépend
@@ -62,14 +62,26 @@ export type MetierFormule = { metier: string; formule: string; logique: string }
 export const metiersFormules: Record<string, MetierFormule[]> = {
   S01: [{ metier: "Élevage", formule: "L1 + M7 + M5", logique: "Transformation" }],
   S02: [{ metier: "Savonnerie", formule: "L1", logique: "Transformation" }],
+  S05: [
+    { metier: "Installation solaire pour compte de tiers", formule: "L3", logique: "Service et temps" },
+    { metier: "Revente d'équipements solaires", formule: "L2", logique: "Négoce" },
+  ],
   S06: [{ metier: "BTP", formule: "L1 + M5 + M4", logique: "Transformation" }],
   S08: [{ metier: "Import-export", formule: "L2 + M3", logique: "Négoce" }],
   S09: [{ metier: "Transport et logistique", formule: "L4 + M6", logique: "Actif et infrastructure" }],
   S11: [{ metier: "Fintech", formule: "L5 + M4", logique: "Plateforme et immatériel" }],
+  S12: [{ metier: "Courtage d'assurance", formule: "L3 + M4", logique: "Service et temps" }],
   S14: [{ metier: "Officine pharmaceutique", formule: "L2 + M1 + M2 + M4", logique: "Négoce" }],
+  S15: [{ metier: "Éditeur de logiciel en abonnement", formule: "L5", logique: "Plateforme et immatériel" }],
   S17: [{ metier: "École", formule: "L3 + M4 + M9", logique: "Service et temps" }],
   S18: [{ metier: "Restaurant", formule: "L1 + M2", logique: "Transformation" }],
+  S19: [{ metier: "Agence de communication", formule: "L3", logique: "Service et temps" }],
+  S21: [{ metier: "Salon de coiffure et institut de beauté", formule: "L3", logique: "Service et temps" }],
   S24: [{ metier: "Blanchisserie", formule: "L3", logique: "Service et temps" }],
+  S27: [
+    { metier: "Consignation maritime", formule: "L3", logique: "Service et temps" },
+    { metier: "Transit en douane", formule: "L3 + M3", logique: "Service et temps" },
+  ],
   S30: [{ metier: "ONG ou projet financé", formule: "L6 + M8 + M5", logique: "Mission et subvention" }],
 };
 
@@ -77,5 +89,5 @@ export const chiffresTaxonomie = {
   familles: 35,
   logiques: 6,
   modulateurs: 10,
-  metiersFormules: 11,
+  metiersFormules: 19,
 };

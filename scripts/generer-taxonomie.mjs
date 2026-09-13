@@ -29,6 +29,9 @@ const ACCENTS = {
   "Prix administre": "Prix administré",
   "Reglemente ou sous licence": "Réglementé ou sous licence",
   "Multi-activites": "Multi-activités",
+  "Editeur de logiciel en abonnement": "Éditeur de logiciel en abonnement",
+  "Revente d'equipements solaires": "Revente d'équipements solaires",
+  "Salon de coiffure et institut de beaute": "Salon de coiffure et institut de beauté",
 };
 
 const accentue = (v) => ACCENTS[v] ?? v;
