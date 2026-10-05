@@ -49,11 +49,14 @@ function buildSummary(data: FormData) {
   ].join("\n");
 }
 
-type FieldErrors = Partial<Record<"probleme" | "nom" | "email", string>>;
+type FieldErrors = Partial<Record<"probleme" | "pays" | "nom" | "email" | "envoi", string>>;
+
+type Suivi = { reference?: string; urgent?: boolean; espace?: string };
 
 export default function QualificationForm() {
   const [step, setStep] = useState<1 | 2>(1);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent-email" | "sent-whatsapp">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent-portail" | "sent-email" | "sent-whatsapp">("idle");
+  const [suivi, setSuivi] = useState<Suivi>({});
   const [errors, setErrors] = useState<FieldErrors>({});
   const errorSummaryRef = useRef<HTMLDivElement>(null);
   const [data, setData] = useState<FormData>({
@@ -84,6 +87,7 @@ export default function QualificationForm() {
 
   function validateStep1(): FieldErrors {
     const e: FieldErrors = {};
+    if (!data.pays.trim()) e.pays = "Indiquez le pays où se trouve votre organisation.";
     if (!data.probleme.trim()) e.probleme = "Décrivez en quelques mots le problème principal.";
     return e;
   }
@@ -131,8 +135,22 @@ export default function QualificationForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      const corps = await res.json().catch(() => null);
+      if (res.status === 422 && corps?.reason === "refus") {
+        // Le Portail a refusé la demande pour une raison qu'il nomme : on la dit, sans basculer ailleurs.
+        fallbackTab?.close();
+        setErrors({ envoi: corps.message });
+        setStatus("idle");
+        focusErrorSummary();
+        return;
+      }
       if (!res.ok) throw new Error("backend unavailable");
       fallbackTab?.close();
+      if (corps?.canal === "portail" && corps.espace) {
+        setSuivi({ reference: corps.reference, urgent: corps.urgent, espace: corps.espace });
+        setStatus("sent-portail");
+        return;
+      }
       setStatus("sent-email");
       return;
     } catch {
@@ -149,6 +167,27 @@ export default function QualificationForm() {
       window.location.href = target;
     }
     setStatus("sent-whatsapp");
+  }
+
+  if (status === "sent-portail") {
+    return (
+      <div className="border border-line bg-paper-raised p-8 md:p-10">
+        <h2 className="font-display text-2xl">Votre demande est enregistrée</h2>
+        <p className="mt-3 max-w-lg text-ink-soft">
+          Référence {suivi.reference}.{" "}
+          {suivi.urgent
+            ? "Votre situation est urgente : choisissez dès maintenant votre créneau d'appel dans votre espace."
+            : "Dans votre espace, dites-nous quand vous souhaitez démarrer, ou choisissez un créneau d'appel si vous préférez en parler tout de suite."}{" "}
+          Le lien vous est aussi envoyé par e-mail.
+        </p>
+        <a
+          href={suivi.espace}
+          className="mt-6 inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-ink/85"
+        >
+          {suivi.urgent ? "Choisir mon créneau d'appel" : "Ouvrir mon espace"}
+        </a>
+      </div>
+    );
   }
 
   if (status === "sent-email") {
@@ -239,7 +278,21 @@ export default function QualificationForm() {
             </div>
             <div>
               <label className={labelClass} htmlFor="pays">Pays</label>
-              <input id="pays" className={fieldClass} value={data.pays} onChange={(e) => update("pays", e.target.value)} placeholder="Ex. Bénin" />
+              <input
+                id="pays"
+                className={`${fieldClass} ${errors.pays ? "border-signal" : ""}`}
+                value={data.pays}
+                onChange={(e) => update("pays", e.target.value)}
+                placeholder="Ex. Bénin"
+                aria-required="true"
+                aria-invalid={Boolean(errors.pays)}
+                aria-describedby={errors.pays ? "pays-error" : undefined}
+              />
+              {errors.pays && (
+                <p id="pays-error" className="mt-1 text-sm text-signal">
+                  {errors.pays}
+                </p>
+              )}
             </div>
           </div>
           <div>
