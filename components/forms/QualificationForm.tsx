@@ -3,6 +3,7 @@
 import { useState, useRef, FormEvent } from "react";
 import { site } from "@/lib/content/site";
 import { whatsappLink } from "@/lib/whatsapp";
+import { lireProvenance } from "@/lib/provenance";
 
 const orgTypes = ["Entreprise privée", "Institution publique", "Fonds / investisseur", "Banque / institution financière", "Autre"];
 const sizes = ["Moins de 10 employés", "10 à 50 employés", "50 à 200 employés", "Plus de 200 employés"];
@@ -133,7 +134,7 @@ export default function QualificationForm() {
       const res = await fetch("/api/diagnostic", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, provenance: lireProvenance() }),
       });
       const corps = await res.json().catch(() => null);
       if (res.status === 422 && corps?.reason === "refus") {
