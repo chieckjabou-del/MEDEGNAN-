@@ -428,14 +428,6 @@ export default function QualificationForm() {
             >
               {status === "sending" ? "Envoi en cours…" : "Envoyer ma demande"}
             </button>
-            <a
-              href={whatsappLink(buildSummary(data))}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-sm border border-ink/30 px-6 py-3 text-sm font-medium hover:bg-ink/5"
-            >
-              Envoyer sur WhatsApp
-            </a>
           </div>
         </div>
       )}
